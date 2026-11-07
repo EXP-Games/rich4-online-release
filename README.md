@@ -6,13 +6,13 @@
 
 ## 下载与启动
 
-当前版本为 [v0.1.2 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.2-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
+当前版本为 [v0.1.3 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.3-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
 
 | 文件 | 使用方法 |
 | --- | --- |
-| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/Rich4-Windows-x64-v0.1.2-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.2-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
+| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/Rich4-Windows-x64-v0.1.3-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
+| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.3-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
+| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
 
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
@@ -36,13 +36,11 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实
 
 平台房间全员离开后初始化并保留口令；玩家自建房间随房主离开解散。不要公开管理令牌、私人房间配置或日志。
 
-## v0.1.2 更新
+## v0.1.3 更新
 
-- 联机买地、加盖确认只在买家屏幕显示。
-- 修复遥控骰子嵌套面板的鼠标命中偏移。
-- 医院、监狱新增可点击的返回按钮。
-- 选角随机路线开关整合到地图区，移除底部路线和种子大条。
-- 手机和 PC 使用相同地图名称表，保留 Android 桌面图标。
-- APK 默认无过场，系统设置可选下载动画；独立下载目录不随 APK 升级清理。
+- LOAD 没有存档时也会显示读档页，空槽提示“暂无存档”，可点击返回或使用系统返回。
+- 按实际点击位置选择存档，触屏无需先移动鼠标。
+- 移动端“切换人物”“准备／取消准备”统一为绿色，横屏、竖屏一致。
+- 继承 v0.1.2 的买地提示范围、骰子命中、设施返回、地图名称统一及可选过场下载等修复。
 
-验证范围：同机四个 Windows 原生客户端完成两轮、8 次掷骰、5 次购地并核对状态；横竖屏设施返回、骰子点击及房间选图通过。ARM64 APK 已通过构建、签名、16 KB 对齐检查。这些结果不等于实体四机整局验收。
+本轮通过 API 35 x86_64 模拟器验证空读档页、返回及实际触屏读档进入棋盘，并检查横竖屏房间绿色按钮；此前联机回归证据继续复用。ARM64 APK 已通过构建、签名、16 KB 对齐检查。这些结果不等于 ARM64 手机或实体四机整局验收。
