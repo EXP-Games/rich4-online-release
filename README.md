@@ -4,13 +4,13 @@
 
 ## 下载与启动
 
-在 [Releases](https://github.com/EXP-Games/rich4-online-release/releases) 下载同一批版本的安装包。Windows 和手机联机时必须一起更新。
+当前版本为 [v0.1.2 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.2-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
 
 | 文件 | 使用方法 |
 | --- | --- |
-| Windows x64 完整 ZIP，约 1.69 GB | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| Android ARM64 无过场 APK，约 295 MB | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| `SHA256SUMS.txt` | 用 SHA-256 核对下载文件完整性 |
+| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/Rich4-Windows-x64-v0.1.2-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
+| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.2-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
+| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.2-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
 
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
