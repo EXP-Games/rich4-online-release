@@ -10,6 +10,8 @@
 
 本版补齐保存、卡片包、道具包、帮助、大地图和选择窗口的触屏返回入口，保存页可直接点击选槽。Windows 横竖屏及 Android 模拟器已完成相关导航检查；实体手机和四设备整局仍待验收。
 
+另完成同机 Windows＋Android 模拟器两个客户端及两个 AI 的自然 30 天完整局：255 个共享模型／RNG 边界一致，双方持续在线至结算，正常回到原房、保留口令并重置准备。这个结果不替代真机、四台独立设备或异地整局验收。
+
 | 文件 | 使用方法 |
 | --- | --- |
 | [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.4-preview.20261107/Rich4-Windows-x64-v0.1.4-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
