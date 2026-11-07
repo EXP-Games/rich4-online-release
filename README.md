@@ -6,17 +6,17 @@
 
 ## 下载与启动
 
-当前版本为 [v0.1.5 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.5-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
+当前版本为 [v0.1.6 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.6-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
 
-本版新增研究所与死神召唤页的直接点击和返回入口，继续保留保存、卡片包、道具包、帮助、大地图和选择窗口的触屏返回入口，保存页可直接点击选槽。Windows 横竖屏及 Android 模拟器已完成相关导航检查；实体手机和四设备整局仍待验收。
+本版将股票、抽卡、银行、商店、医院等棋盘窗口统一改为浮层，保留背景画面；可取消的窗口支持外部点击收回，修复横竖屏切换后的背景恢复。事件展示关闭后照常结算奖励或惩罚。继续包含之前的触屏返回和联机修复。
 
 另完成同机 Windows＋Android 模拟器两个客户端及两个 AI 的自然 30 天完整局：255 个共享模型／RNG 边界一致，双方持续在线至结算，正常回到原房、保留口令并重置准备。这个结果不替代真机、四台独立设备或异地整局验收。
 
 | 文件 | 使用方法 |
 | --- | --- |
-| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.5-preview.20261107/Rich4-Windows-x64-v0.1.5-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.5-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.5-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.5-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
+| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.6-preview.20261107/Rich4-Windows-x64-v0.1.6-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
+| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.6-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.6-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
+| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.6-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
 
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
@@ -40,11 +40,13 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实
 
 平台房间全员离开后初始化并保留口令；玩家自建房间随房主离开解散。不要公开管理令牌、私人房间配置或日志。
 
-## v0.1.5 更新
+## v0.1.6 更新
 
-- 研究所按点击坐标选择开发项目，可点击返回。
-- 死神召唤选人页支持直接点击目标、可见返回及 Android 返回键。
-- 继承保存／卡片／道具／帮助／地图等触屏返回、绿色准备按钮和可选过场下载。
-- 双平台由 GitHub Actions 构建、签名与校验后公开发布。安装包 SHA-256 与独立校验清单已核对。
+- 股票行情、红／黑卡选股、走势图及获得卡片展示不再填黑外围。
+- 点击行情窗口外关闭；走势图关闭后回到行情，关闭点击不穿透到棋盘。
+- 命运／机遇事件点击外部结束展示，奖励或惩罚仍正常结算。
+- 银行、商店、医院等同类棋盘窗口一并浮层化；外部取消仍走各窗口原有权限和指令。
+- 横竖屏切换拒绝恢复过期背景缓存；数量输入保留编辑值，可取消返回。
+- 继承此前触屏返回、绿色准备按钮、可选过场等功能。
 
-Windows 两种方向完成受控页面检查；Android 模拟器已验证覆盖安装、载入已有存档及菜单投降后取消死神选择并继续回合。研究所 Android 实际操作、ARM64 真机、四台实体设备及异地完整局仍待验收。
+已验证 Windows 横竖屏连续窗口操作、Android API 35 x86_64 模拟器的帮助／行情／数量输入旋转及外部返回，并通过相关资金道具回归和本机四客户端股票操作；ARM64 手机及新增四台实体设备、异地完整局仍待验收。
