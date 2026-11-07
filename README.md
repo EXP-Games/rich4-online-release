@@ -1,6 +1,6 @@
 # 大富翁 4 · 联机重制版下载
 
-本仓库用于公开分发 Windows 安装包、Android APK 和后续可选资源，不包含开发源码。
+本仓库用于公开分发 Windows 安装包、Android APK 和可选资源，不托管开发源码仓库及历史。
 
 ## 下载与启动
 
@@ -15,6 +15,10 @@
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
 过场文件独立放在 [cinematics-v1 资源发布页](https://github.com/EXP-Games/rich4-online-release/releases/tag/cinematics-v1)，APK 按内置文件大小和 SHA-256 清单校验，每次升级无需重复下载。未完成的单个文件重试时会从头下载。
+
+| 系统设置入口 | 可选下载与播放开关 |
+| --- | --- |
+| <img src="docs/images/settings.png" width="260" alt="系统设置过场资源入口"> | <img src="docs/images/download.png" width="260" alt="可选过场下载"> |
 
 Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实体设备整局仍待验收，iOS 尚未提供。
 
