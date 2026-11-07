@@ -6,13 +6,15 @@
 
 ## 下载与启动
 
-当前版本为 [v0.1.3 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.3-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
+当前版本为 [v0.1.4 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.4-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
+
+本版补齐保存、卡片包、道具包、帮助、大地图和选择窗口的触屏返回入口，保存页可直接点击选槽。Windows 横竖屏及 Android 模拟器已完成相关导航检查；实体手机和四设备整局仍待验收。
 
 | 文件 | 使用方法 |
 | --- | --- |
-| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/Rich4-Windows-x64-v0.1.3-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.3-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.3-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
+| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.4-preview.20261107/Rich4-Windows-x64-v0.1.4-preview.20261107.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
+| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.4-preview.20261107/Rich4-Android-arm64-no-cinematics-v0.1.4-preview.20261107.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
+| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.4-preview.20261107/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
 
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
@@ -36,7 +38,7 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实
 
 平台房间全员离开后初始化并保留口令；玩家自建房间随房主离开解散。不要公开管理令牌、私人房间配置或日志。
 
-## v0.1.3 更新
+## v0.1.4 更新
 
 - LOAD 没有存档时也会显示读档页，空槽提示“暂无存档”，可点击返回或使用系统返回。
 - 按实际点击位置选择存档，触屏无需先移动鼠标。
