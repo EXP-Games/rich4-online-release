@@ -2,6 +2,8 @@
 
 本仓库用于公开分发 Windows 安装包、Android APK 和可选资源，不托管开发源码仓库及历史。
 
+[打开游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/)
+
 ## 下载与启动
 
 当前版本为 [v0.1.2 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.2-preview.20261107)。Windows 和手机联机时必须一起更新到同一批版本。
