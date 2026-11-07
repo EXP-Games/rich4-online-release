@@ -1,0 +1,6 @@
+*.apk
+*.zip
+*.exe
+*.r4v
+*.log
+__pycache__/
