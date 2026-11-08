@@ -24,15 +24,33 @@ APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和
 
 过场文件独立放在 [cinematics-v1 资源发布页](https://github.com/EXP-Games/rich4-online-release/releases/tag/cinematics-v1)，APK 按内置文件大小和 SHA-256 清单校验，每次升级无需重复下载。未完成的单个文件重试时会从头下载。
 
-| 系统设置入口 | 可选下载与播放开关 |
-| --- | --- |
-| <img src="docs/images/settings.png" width="260" alt="系统设置过场资源入口"> | <img src="docs/images/download.png" width="260" alt="可选过场下载"> |
-
 Android 包使用开发签名，属于预览版。ARM64 手机实机及实体四机验收已移出当前范围，不代表已验证；公网完整对局验收仍未完成。iOS 尚未提供。
+
+## 新版界面设计预览
+
+以下是设计效果图，尚未全部实装；不表示当前 APK／Windows 包已经包含。点击图片可查看原图，完整图集见 [下载站效果图](https://exp-games.github.io/rich4-online-release/#preview)。
+
+| 页面 | PC 横屏 | 手机横屏 | 手机竖屏 |
+| --- | --- | --- | --- |
+| 主菜单 | <a href="docs/images/ui/main-pc.png"><img src="docs/images/ui/main-pc.png" width="220" alt="主菜单 · pc · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-landscape.png"><img src="docs/images/ui/main-mobile-landscape.png" width="220" alt="主菜单 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-portrait.png"><img src="docs/images/ui/main-mobile-portrait.png" width="120" alt="主菜单 · mobile-portrait · 设计效果图"></a> |
+| 联机房间 | <a href="docs/images/ui/room-pc.png"><img src="docs/images/ui/room-pc.png" width="220" alt="联机房间 · pc · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-landscape.png"><img src="docs/images/ui/room-mobile-landscape.png" width="220" alt="联机房间 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-portrait.png"><img src="docs/images/ui/room-mobile-portrait.png" width="120" alt="联机房间 · mobile-portrait · 设计效果图"></a> |
+| 系统设置 | <a href="docs/images/ui/settings-pc.png"><img src="docs/images/ui/settings-pc.png" width="220" alt="系统设置 · pc · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-landscape.png"><img src="docs/images/ui/settings-mobile-landscape.png" width="220" alt="系统设置 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-portrait.png"><img src="docs/images/ui/settings-mobile-portrait.png" width="120" alt="系统设置 · mobile-portrait · 设计效果图"></a> |
+| 离线行动确认 | <a href="docs/images/ui/policy-pc.png"><img src="docs/images/ui/policy-pc.png" width="220" alt="离线行动确认 · pc · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-landscape.png"><img src="docs/images/ui/policy-mobile-landscape.png" width="220" alt="离线行动确认 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-portrait.png"><img src="docs/images/ui/policy-mobile-portrait.png" width="120" alt="离线行动确认 · mobile-portrait · 设计效果图"></a> |
+| 选择地图 | <a href="docs/images/ui/maps-pc.png"><img src="docs/images/ui/maps-pc.png" width="220" alt="选择地图 · pc · 设计效果图"></a> | <a href="docs/images/ui/maps-mobile-landscape.png"><img src="docs/images/ui/maps-mobile-landscape.png" width="220" alt="选择地图 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/maps-mobile-portrait.png"><img src="docs/images/ui/maps-mobile-portrait.png" width="120" alt="选择地图 · mobile-portrait · 设计效果图"></a> |
+| 选择角色 | <a href="docs/images/ui/characters-pc.png"><img src="docs/images/ui/characters-pc.png" width="220" alt="选择角色 · pc · 设计效果图"></a> | <a href="docs/images/ui/characters-mobile-landscape.png"><img src="docs/images/ui/characters-mobile-landscape.png" width="220" alt="选择角色 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/characters-mobile-portrait.png"><img src="docs/images/ui/characters-mobile-portrait.png" width="120" alt="选择角色 · mobile-portrait · 设计效果图"></a> |
+| 棋盘与行动条 | <a href="docs/images/ui/board-pc.png"><img src="docs/images/ui/board-pc.png" width="220" alt="棋盘与行动条 · pc · 设计效果图"></a> | <a href="docs/images/ui/board-mobile-landscape.png"><img src="docs/images/ui/board-mobile-landscape.png" width="220" alt="棋盘与行动条 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/board-mobile-portrait.png"><img src="docs/images/ui/board-mobile-portrait.png" width="120" alt="棋盘与行动条 · mobile-portrait · 设计效果图"></a> |
+
+菜单插画、立绘和头像保留已认可的设计风格；棋盘中的人物、神仙与 NPC 的造型仍需忠于原版校准。游戏时间默认无限期，单机使用原角色名。房间编辑结束自动保存、新 UI 接入和 PC 分辨率约束仍在开发，不作为当前安装包已完成功能宣传。
+
+### 行动条与按钮状态
+
+| 行动条局部及状态 | 按钮未按下／按下 |
+| --- | --- |
+| <a href="docs/images/ui/timeline-detail.png"><img src="docs/images/ui/timeline-detail.png" width="420" alt="行动条局部、状态及换人方向"></a> | <a href="docs/images/ui/button-states.png"><img src="docs/images/ui/button-states.png" width="420" alt="按钮未按下与按下状态"></a> |
 
 ## 联机教程
 
-1. 主菜单点击 ONLINE，填写昵称、服务器 IP 和端口。房间口令为 6 位。
+1. 主菜单点击 ONLINE，填写昵称和 6 位房间口令。默认平台 IP 为 <code>47.253.174.78</code>，游戏端口为 <code>27654</code>，完整地址为 <code>47.253.174.78:27654</code>，支持手动修改。旧版安装包若未预填，请手动填写；新界面接入后的首次默认地址按此设置，已有自定义配置优先。
 2. 玩家电脑可“本地建房”，平台管理员可通过 Linux 大厅创建房间；其他玩家填写地址和口令加入。Windows 本地建房需要 Python 3.10+，加入已有房间不需要 Python。
 3. 加入序号最小者为房主，负责选择地图、期限和席位。三人一叉是三人局；三人一空会在开始时补入 AI。
 4. 点击“准备”，选择断线预案，再点“确认并准备”。角色卡显示“已准备”后，由房主开始游戏。
@@ -49,4 +67,4 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及实体四
 - 联机等待时可查看本机地图，不获得其他玩家的操作权限。
 - 双指、取消、失焦和旋转时清理旧手势，避免误点 GO 或工具栏。
 
-Windows 横竖屏夹具与 Android API 35 x86_64 模拟器实际滑动通过；与 Windows 及两个 AI 继续四次人类掷骰，六个共享模型／RNG 边界一致。ARM64 真机、四台实体设备及异地完整局仍待验收。不包含双指缩放。
+Windows 横竖屏夹具与 Android API 35 x86_64 模拟器实际滑动通过；与 Windows 及两个 AI 继续四次人类掷骰，六个共享模型／RNG 边界一致。实体手机及实体四机验收已移出当前范围，公网完整对局仍待验收；移除范围不等于验证通过。不包含双指缩放。
