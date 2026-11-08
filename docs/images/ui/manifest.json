@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "kind": "design-concept",
+  "implemented": false,
+  "screens": [
+    {
+      "id": "main",
+      "title": "主菜单",
+      "note": "合并开局入口，保留主菜单忍太郎插画。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "main-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "cde96ead22ad5f8ac54391d66698950ed85824296adbccb35b902bb476a3aff8",
+          "bytes": 2077793
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "main-mobile-landscape.png",
+          "width": 1846,
+          "height": 852,
+          "sha256": "1282ae9f2df80915e0db0d792a3fcc4be233e7240041046adef1cce9a6f23367",
+          "bytes": 2055664
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "main-mobile-portrait.png",
+          "width": 941,
+          "height": 1670,
+          "sha256": "5b69e3bdf76a364bdefec0fe354540423962313b02b920cf5d6c56ccf4e44bcb",
+          "bytes": 2091584
+        }
+      ]
+    },
+    {
+      "id": "room",
+      "title": "联机房间",
+      "note": "四个席位、房间聊天与编辑结束自动保存的设计。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "room-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "db71b03a20bcd8eeb68628fc33055b54a380159bf367a635ac0cc164e4d676e8",
+          "bytes": 2031129
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "room-mobile-landscape.png",
+          "width": 1821,
+          "height": 864,
+          "sha256": "657895cd45ea5d4e9074219fe280886030209c3fd5b95ca9fd5f7ae916ff17cb",
+          "bytes": 1982015
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "room-mobile-portrait.png",
+          "width": 892,
+          "height": 1763,
+          "sha256": "ae670bd3ca78e876cbe04c10af72be8badfa83527326587a591dae514e0b8492",
+          "bytes": 2036314
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": "系统设置",
+      "note": "PC 展示显示页；手机展示音画页，横竖屏独立排版。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "settings-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "a305cf72642566121dedc88569aefcedd74af847ebe3cd4c21b9eee2201b9e4b",
+          "bytes": 1982163
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "settings-mobile-landscape.png",
+          "width": 1821,
+          "height": 864,
+          "sha256": "72a2c09d9ff9205d9740d79f2b9af5aafa0f7fe2b4e64a06e10e31d258cda9af",
+          "bytes": 1894895
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "settings-mobile-portrait.png",
+          "width": 892,
+          "height": 1763,
+          "sha256": "e4c9707ed4961b17300be00b5020f9c2e0c3ad1d87ef11830dd58171da68b530",
+          "bytes": 2045968
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "title": "准备 · 离线行动",
+      "note": "AI 接管、破产清算、外星人暂离。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "policy-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "f2a4d9c6195189a881cff6b7134fe3828a66c1acac7236941c055e5f4d9350a1",
+          "bytes": 1885178
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "policy-mobile-landscape.png",
+          "width": 1821,
+          "height": 864,
+          "sha256": "2e425881170636d56746e13a327e899ba4fb37c7448225156306ec813e832f95",
+          "bytes": 1874874
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "policy-mobile-portrait.png",
+          "width": 898,
+          "height": 1751,
+          "sha256": "d90c66b4591fb550d44ee56d82ada57cc538feb799347cadfbb4d3d98455ba8c",
+          "bytes": 1862580
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "选择地图",
+      "note": "开始游戏后统一选择八张经典地图。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "maps-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "ea735795968bd23626a1a92699d79c3c40264ddd598dcd5b632d1aa19c23394e",
+          "bytes": 2450709
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "maps-mobile-landscape.png",
+          "width": 1820,
+          "height": 864,
+          "sha256": "a4d891112dbd8739dcfc289e513e55e4d68ebe2b99692357e793cc15840366b1",
+          "bytes": 2305539
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "maps-mobile-portrait.png",
+          "width": 892,
+          "height": 1764,
+          "sha256": "8f95fd39a7313c4978d34ad1533510f6d740f1352a9c62405744068c71604f2e",
+          "bytes": 2377337
+        }
+      ]
+    },
+    {
+      "id": "characters",
+      "title": "选择角色",
+      "note": "十二个角色，默认原角色名，游戏时间默认无限期。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "characters-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "33e4fe3953b6896ff66285bcc7684ad398b92fb852a81a2e7db51dd791dc4e70",
+          "bytes": 2241553
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "characters-mobile-landscape.png",
+          "width": 1822,
+          "height": 863,
+          "sha256": "71eec11fd5e800159b2ed7a5839681875a2db048c8e22d5fb79372635c229452",
+          "bytes": 2193217
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "characters-mobile-portrait.png",
+          "width": 894,
+          "height": 1760,
+          "sha256": "53f27aa7e9ae8469e80bc8f719ee11e3f99068253f7733055a1791dde258d560",
+          "bytes": 2322525
+        }
+      ]
+    },
+    {
+      "id": "board",
+      "title": "棋盘与行动条",
+      "note": "只用小头像和图标显示行动顺序；游戏内造型仍需按原版校准。",
+      "devices": [
+        {
+          "id": "pc",
+          "label": "PC 横屏",
+          "file": "board-pc.png",
+          "width": 1672,
+          "height": 941,
+          "sha256": "0783854c4134676622b28e78148472b5e2cf34f50954bd3d29185340f860c629",
+          "bytes": 3476110
+        },
+        {
+          "id": "mobile-landscape",
+          "label": "手机横屏",
+          "file": "board-mobile-landscape.png",
+          "width": 1846,
+          "height": 852,
+          "sha256": "0ccd75cd6bc499039a221cd5c4f9c3d9b2205f4d77b10ef27a5df8e8142d42c5",
+          "bytes": 3090381
+        },
+        {
+          "id": "mobile-portrait",
+          "label": "手机竖屏",
+          "file": "board-mobile-portrait.png",
+          "width": 972,
+          "height": 1618,
+          "sha256": "d43232d615c957160c6dfc5e503dec6c588d4474dcbfe511b1a959019cd2833c",
+          "bytes": 3231358
+        }
+      ]
+    }
+  ],
+  "supplements": [
+    "button-states.png",
+    "timeline-detail.png"
+  ]
+}

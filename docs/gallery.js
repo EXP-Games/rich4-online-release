@@ -1,0 +1,11 @@
+"use strict";
+(()=>{const buttons=[...document.querySelectorAll(".filters button[data-device]")],cards=[...document.querySelectorAll(".device-card")],status=document.getElementById("gallery-status"),names={all:"全部布局",pc:"PC 横屏","mobile-landscape":"手机横屏","mobile-portrait":"手机竖屏"};
+buttons.forEach(button=>button.addEventListener("click",()=>{const device=button.dataset.device;buttons.forEach(b=>{b.classList.toggle("active",b===button);b.setAttribute("aria-pressed",String(b===button))});cards.forEach(c=>{c.hidden=device!=="all"&&c.dataset.device!==device});document.querySelectorAll(".device-grid").forEach(g=>g.classList.toggle("filtered",device!=="all"));status.textContent="展示"+names[device]+" · "+cards.filter(c=>!c.hidden).length+" 张效果图，点击图片可放大。"}));
+const dialog=document.getElementById("image-viewer");if(!dialog||typeof dialog.showModal!=="function")return;const links=[...document.querySelectorAll("a.preview-link")],title=document.getElementById("viewer-title"),image=document.getElementById("viewer-image"),original=document.getElementById("viewer-original");let current;
+function display(link){current=link;title.textContent=link.dataset.title;image.src=link.href;image.alt=link.querySelector("img").alt;original.href=link.href}
+links.forEach(link=>link.addEventListener("click",event=>{event.preventDefault();display(link);dialog.showModal();document.body.classList.add("viewer-open")}));
+function step(delta){const visible=links.filter(l=>!l.closest("[hidden]"));if(visible.length)display(visible[(visible.indexOf(current)+delta+visible.length)%visible.length])}
+document.getElementById("viewer-close").addEventListener("click",()=>dialog.close());document.getElementById("viewer-prev").addEventListener("click",()=>step(-1));document.getElementById("viewer-next").addEventListener("click",()=>step(1));
+dialog.addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();step(-1)}if(event.key==="ArrowRight"){event.preventDefault();step(1)}});
+dialog.addEventListener("click",event=>{const r=dialog.getBoundingClientRect();if(event.target===dialog&&(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom))dialog.close()});
+dialog.addEventListener("close",()=>{document.body.classList.remove("viewer-open");image.removeAttribute("src");if(current)current.focus()})})();

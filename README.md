@@ -4,6 +4,8 @@
 
 [打开游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/)
 
+下载区下方新增 [新版界面效果图](https://exp-games.github.io/rich4-online-release/#preview)：七组页面，每组提供 PC 横屏、手机横屏、手机竖屏，共二十一张，支持筛选和点击放大。网页采用蓝色、紫金边框与立体按钮的新视觉。效果图尚未全部实装，不代表当前安装包已经包含这些新界面；棋盘人物、神仙和 NPC 的造型仍需按原版校准。
+
 ## 下载与启动
 
 当前版本为 [v0.1.9 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.9-preview.20261108)。Windows 和手机联机时必须一起更新到同一批版本。
@@ -26,7 +28,7 @@ APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和
 | --- | --- |
 | <img src="docs/images/settings.png" width="260" alt="系统设置过场资源入口"> | <img src="docs/images/download.png" width="260" alt="可选过场下载"> |
 
-Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实体设备整局仍待验收，iOS 尚未提供。
+Android 包使用开发签名，属于预览版。ARM64 手机实机及实体四机验收已移出当前范围，不代表已验证；公网完整对局验收仍未完成。iOS 尚未提供。
 
 ## 联机教程
 
