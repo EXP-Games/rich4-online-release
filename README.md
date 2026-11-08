@@ -6,17 +6,17 @@
 
 ## 下载与启动
 
-当前版本为 [v0.1.8 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.8-preview.20261108)。Windows 和手机联机时必须一起更新到同一批版本。
+当前版本为 [v0.1.9 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.9-preview.20261108)。Windows 和手机联机时必须一起更新到同一批版本。
 
-本版修复关闭文本框的按键穿透、系统隐藏软键盘后无法重新唤起；连接中断后同进程重连可恢复此局草稿，房间聊天确认超时可手动重试。草稿只保存在内存，不自动重发，也不跨房间或新对局带入。保留此前棋盘浮层、触屏返回和联机修复。
+本版加入棋盘触控浏览：单指拖动地图，按住查看物件，联机等待时也可本机查看。双指、系统取消、失焦、旋转和进入弹窗会清理旧手势，避免误点 GO。只改变本机视角，不移动角色或修改对局状态。保留此前聊天、浮层和触屏返回修复。
 
 另完成同机 Windows＋Android 模拟器两个客户端及两个 AI 的自然 30 天完整局：255 个共享模型／RNG 边界一致，双方持续在线至结算，正常回到原房、保留口令并重置准备。这个结果不替代真机、四台独立设备或异地整局验收。
 
 | 文件 | 使用方法 |
 | --- | --- |
-| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.8-preview.20261108/Rich4-Windows-x64-v0.1.8-preview.20261108.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.8-preview.20261108/Rich4-Android-arm64-no-cinematics-v0.1.8-preview.20261108.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.8-preview.20261108/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
+| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/Rich4-Windows-x64-v0.1.9-preview.20261108.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
+| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/Rich4-Android-arm64-no-cinematics-v0.1.9-preview.20261108.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
+| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
 
 APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
 
@@ -40,11 +40,11 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及四台实
 
 平台房间全员离开后初始化并保留口令；玩家自建房间随房主离开解散。不要公开管理令牌、私人房间配置或日志。
 
-## v0.1.8 更新
+## v0.1.9 更新
 
-- 修复关闭文本框、旋转或失焦后按键抬起穿透游戏的问题。
-- 系统隐藏软键盘后，点聊天区或房间输入框可重新唤起。
-- 同进程断线重连恢复此局未发送草稿；换房、新局、离房清理，不写磁盘。
-- 房间聊天确认超时后可手动重试，不自动重发；迟到的旧确认不会当作新消息。
+- 棋盘支持单指拖动，八个地图朝向按实际渲染投影对齐。
+- 轻微手抖保留点按，按住物件仍可查看说明。
+- 联机等待时可查看本机地图，不获得其他玩家的操作权限。
+- 双指、取消、失焦和旋转时清理旧手势，避免误点 GO 或工具栏。
 
-Android API 35 x86_64 模拟器通过 55 秒后台离线、回房、原身份重连、恢复草稿及继续轮转；Windows 另完成键盘边界和延迟确认检查。ARM64 真机、厂商省电策略、四台实体设备及异地完整局仍待验收。
+Windows 横竖屏夹具与 Android API 35 x86_64 模拟器实际滑动通过；与 Windows 及两个 AI 继续四次人类掷骰，六个共享模型／RNG 边界一致。ARM64 真机、四台实体设备及异地完整局仍待验收。不包含双指缩放。
