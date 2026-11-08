@@ -6,7 +6,7 @@
     {
       "id": "main",
       "title": "主菜单",
-      "note": "合并开局入口，保留主菜单忍太郎插画。",
+      "note": "封面忍太郎已按确认的头部修正护额；开始游戏合并原有两种开局入口。",
       "devices": [
         {
           "id": "pc",
@@ -14,8 +14,8 @@
           "file": "main-pc.png",
           "width": 1672,
           "height": 941,
-          "sha256": "cde96ead22ad5f8ac54391d66698950ed85824296adbccb35b902bb476a3aff8",
-          "bytes": 2077793
+          "sha256": "669a1ea31d747357435dbb31e395a85b614024476477470874473f7a0e662db3",
+          "bytes": 2062083
         },
         {
           "id": "mobile-landscape",
@@ -23,8 +23,8 @@
           "file": "main-mobile-landscape.png",
           "width": 1846,
           "height": 852,
-          "sha256": "1282ae9f2df80915e0db0d792a3fcc4be233e7240041046adef1cce9a6f23367",
-          "bytes": 2055664
+          "sha256": "d37e7f9714aefb2d4cd094852080659ca304498587353b58d453ba021a3db33a",
+          "bytes": 2087368
         },
         {
           "id": "mobile-portrait",
@@ -32,8 +32,8 @@
           "file": "main-mobile-portrait.png",
           "width": 941,
           "height": 1670,
-          "sha256": "5b69e3bdf76a364bdefec0fe354540423962313b02b920cf5d6c56ccf4e44bcb",
-          "bytes": 2091584
+          "sha256": "2c2b43096c6f1c2e4df10b8307d03c144d027822349d5ef9efee0c55f5e270e6",
+          "bytes": 2097300
         }
       ]
     },

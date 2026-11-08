@@ -6,6 +6,8 @@
 
 下载区下方新增 [新版界面效果图](https://exp-games.github.io/rich4-online-release/#preview)：七组页面，每组提供 PC 横屏、手机横屏、手机竖屏，共二十一张，支持筛选和点击放大。网页采用蓝色、紫金边框与立体按钮的新视觉。效果图尚未全部实装，不代表当前安装包已经包含这些新界面；棋盘人物、神仙和 NPC 的造型仍需按原版校准。
 
+主菜单封面已按确认的头部修正护额轮廓、透视及“忍”字对齐，PC 横屏、手机横屏、手机竖屏已同步。开发版 UI 正在重绘；下方现有安装包仍为已发布版本。
+
 ## 下载与启动
 
 当前版本为 [v0.1.9 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.9-preview.20261108)。Windows 和手机联机时必须一起更新到同一批版本。
@@ -32,7 +34,7 @@ Android 包使用开发签名，属于预览版。ARM64 手机实机及实体四
 
 | 页面 | PC 横屏 | 手机横屏 | 手机竖屏 |
 | --- | --- | --- | --- |
-| 主菜单 | <a href="docs/images/ui/main-pc.png"><img src="docs/images/ui/main-pc.png" width="220" alt="主菜单 · pc · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-landscape.png"><img src="docs/images/ui/main-mobile-landscape.png" width="220" alt="主菜单 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-portrait.png"><img src="docs/images/ui/main-mobile-portrait.png" width="120" alt="主菜单 · mobile-portrait · 设计效果图"></a> |
+| 主菜单 | <a href="docs/images/ui/main-pc.png"><img src="docs/images/ui/main-pc.png?v=669a1ea31d74" width="220" alt="主菜单 · pc · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-landscape.png"><img src="docs/images/ui/main-mobile-landscape.png?v=d37e7f9714ae" width="220" alt="主菜单 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-portrait.png"><img src="docs/images/ui/main-mobile-portrait.png?v=2c2b43096c6f" width="120" alt="主菜单 · mobile-portrait · 设计效果图"></a> |
 | 联机房间 | <a href="docs/images/ui/room-pc.png"><img src="docs/images/ui/room-pc.png" width="220" alt="联机房间 · pc · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-landscape.png"><img src="docs/images/ui/room-mobile-landscape.png" width="220" alt="联机房间 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-portrait.png"><img src="docs/images/ui/room-mobile-portrait.png" width="120" alt="联机房间 · mobile-portrait · 设计效果图"></a> |
 | 系统设置 | <a href="docs/images/ui/settings-pc.png"><img src="docs/images/ui/settings-pc.png" width="220" alt="系统设置 · pc · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-landscape.png"><img src="docs/images/ui/settings-mobile-landscape.png" width="220" alt="系统设置 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-portrait.png"><img src="docs/images/ui/settings-mobile-portrait.png" width="120" alt="系统设置 · mobile-portrait · 设计效果图"></a> |
 | 离线行动确认 | <a href="docs/images/ui/policy-pc.png"><img src="docs/images/ui/policy-pc.png" width="220" alt="离线行动确认 · pc · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-landscape.png"><img src="docs/images/ui/policy-mobile-landscape.png" width="220" alt="离线行动确认 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-portrait.png"><img src="docs/images/ui/policy-mobile-portrait.png" width="120" alt="离线行动确认 · mobile-portrait · 设计效果图"></a> |

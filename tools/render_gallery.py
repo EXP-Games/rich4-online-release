@@ -19,8 +19,9 @@ def render():
         for device in group['devices']:
             name=device['file']
             assert Path(name).name==name and (DOCS/'images/ui'/name).is_file()
+            url='images/ui/'+name+'?v='+device['sha256'][:12]
             title=group['title']+' · '+device['label']+' · 设计效果图'
-            cards.append(f'<figure class="device-card" data-device="{e(device["id"])}"><a class="preview-link" href="images/ui/{e(name)}" data-title="{e(title)}"><div class="preview-image"><img loading="lazy" decoding="async" src="images/ui/{e(name)}" width="{device["width"]}" height="{device["height"]}" alt="{e(title)}"></div><figcaption><b>{e(device["label"])}</b><span>设计稿 · 点击放大 ↗</span></figcaption></a></figure>')
+            cards.append(f'<figure class="device-card" data-device="{e(device["id"])}"><a class="preview-link" href="{e(url)}" data-title="{e(title)}"><div class="preview-image"><img loading="lazy" decoding="async" src="{e(url)}" width="{device["width"]}" height="{device["height"]}" alt="{e(title)}"></div><figcaption><b>{e(device["label"])}</b><span>设计稿 · 点击放大 ↗</span></figcaption></a></figure>')
         note=f'<p class="group-note">{e(group["note"])}</p>' if group['id']=='board' else ''
         sections.append(f'<section id="screen-{e(group["id"])}" class="screen-group" aria-labelledby="title-{e(group["id"])}"><div class="group-heading"><h3 id="title-{e(group["id"])}">{e(group["title"])}</h3><p>{e(group["note"])}</p></div><div class="device-grid">{"".join(cards)}</div>{note}</section>')
     page=DOCS/'index.html'
