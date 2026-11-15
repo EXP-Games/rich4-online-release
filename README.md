@@ -15,6 +15,8 @@
 
 同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
 
+Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核对通过：[校验报告](docs/release-011-downloads.json)。
+
 ## 1. 平台启动方式
 
 平台提供房间管理和联机转发，运行目录独立于 Git 仓库。安装 Python 3.11+，在部署包目录运行：
