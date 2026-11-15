@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "tag": "v0.1.12-preview.20261116",
+  "url": "https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.12-preview.20261116",
+  "source_commit": "75a502d6e12c58882106c1094467d2afcb53e001",
+  "elapsed_seconds": 91.7,
+  "packages": [
+    {
+      "name": "Rich4-Windows-x64-v0.1.12-preview.20261116.zip",
+      "size": 4306173296,
+      "sha256": "b066155820d41814b71f391baa65426b82ac91932d25c53d2bfa988368fc9855",
+      "parts": [
+        {
+          "name": "Rich4-Windows-x64-v0.1.12-preview.20261116.zip.001",
+          "size": 1887436800,
+          "sha256": "b3bbe94ea3846009bfcf1e981a8d79cf494e9432f36bbc792bf2096cd0f4dbb3"
+        },
+        {
+          "name": "Rich4-Windows-x64-v0.1.12-preview.20261116.zip.002",
+          "size": 1887436800,
+          "sha256": "1b997e110ffce4c316bbd2651682219fcb8ed6e993e87ac06eac91b5b59e7821"
+        },
+        {
+          "name": "Rich4-Windows-x64-v0.1.12-preview.20261116.zip.003",
+          "size": 531299696,
+          "sha256": "b93e57221769204bcdb22c32d9ec2056cb232f2df68120c5f87df61f3e2a56f1"
+        }
+      ]
+    },
+    {
+      "name": "Rich4-Android-arm64-v0.1.12-preview.20261116.apk",
+      "size": 3310488926,
+      "sha256": "340fd7fc15c37675e22712440082b280625c5a0abe449cee19e7e817e60e3ed8",
+      "parts": [
+        {
+          "name": "Rich4-Android-arm64-v0.1.12-preview.20261116.apk.001",
+          "size": 1887436800,
+          "sha256": "1bbb2ef1b176ab050d96ba8c5aa58771d70fe4538502669c89593df2184d5e15"
+        },
+        {
+          "name": "Rich4-Android-arm64-v0.1.12-preview.20261116.apk.002",
+          "size": 1423052126,
+          "sha256": "ed72dd3756436692bd95fed8004086ac6a818505eb295b93fa14ac319c50efba"
+        }
+      ]
+    }
+  ],
+  "scope": "Unauthenticated full public download of every volume, ordered streaming reassembly hashes and lengths, plus downloaded tools/manual/checksums. Binary content stays in memory only; no extraction, installation or gameplay claim."
+}

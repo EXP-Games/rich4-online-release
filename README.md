@@ -4,18 +4,18 @@
 
 [自行部署浏览器版](PLATFORM.md) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
 
-最新预览版 [v0.1.11-preview.20261115](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
+最新预览版 [v0.1.12-preview.20261116](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.12-preview.20261116) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
 
-## 下载 v0.1.11-preview.20261115
+## 下载 v0.1.12-preview.20261116
 
 | 平台 | 完整包大小 | 必须下载的分卷 |
 | --- | --- | --- |
-| Windows x64 | 约 4.26 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.002) · [003](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.003) |
-| Android ARM64 | 约 3.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Android-arm64-v0.1.11-preview.20261115.apk.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Android-arm64-v0.1.11-preview.20261115.apk.002) |
+| Windows x64 | 约 4.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.002) · [003](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.003) |
+| Android ARM64 | 约 3.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Android-arm64-v0.1.12-preview.20261116.apk.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Android-arm64-v0.1.12-preview.20261116.apk.002) |
 
-同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
+同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
 
-Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核对通过：[校验报告](docs/release-011-downloads.json)。
+Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核对通过：[校验报告](docs/release-012-downloads.json)。
 
 ## 1. 平台启动方式
 
@@ -54,7 +54,7 @@ python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-
 | `大富翁4-Re.cmd` | 显示控制台日志的重制版入口 |
 | `大富翁4.exe` | 原版对照入口，默认《多元宇宙之旅》 |
 
-保留完整目录。重制版成品包可直接运行；原版入口和 Windows 本地建房需要 Python 3.11+，加入平台房间不需要 Python。原版和重制版设置、存档独立。日志统一放在 `logs/`。
+保留完整目录，包含 `resources/Fonts/`；中文字体已随包提供，无需在电脑上另外安装。重制版成品包可直接运行；原版入口和 Windows 本地建房需要 Python 3.11+，加入平台房间不需要 Python。原版和重制版设置、存档独立。日志统一放在 `logs/`。
 
 ## 5. Android 版本游玩
 

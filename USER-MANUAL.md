@@ -12,7 +12,7 @@
 
 若发布页直接提供完整 `.zip` 或 `.apk`，下载该文件即可。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 "文件名"` 与 `SHA256SUMS.txt` 对照。合并期间须有足够空间同时保存分卷与成品，验证完成后可自行删除分卷。
 
-当前发布版本为 [v0.1.11-preview.20261115](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115)：Windows 完整 ZIP 约 4.26 GB，共 3 卷；Android ARM64 完整 APK 约 3.31 GB，共 2 卷。只需下载自己平台的分卷，共用上述校验与合并工具。
+当前发布版本为 [v0.1.12-preview.20261116](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.12-preview.20261116)：Windows 完整 ZIP 约 4.31 GB，共 3 卷；Android ARM64 完整 APK 约 3.31 GB，共 2 卷。只需下载自己平台的分卷，共用上述校验与合并工具。
 
 ## 1. 平台启动方式
 
