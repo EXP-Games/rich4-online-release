@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用手册 · 大富翁4重制版</title><link rel="stylesheet" href="game.css"><style>article.manual{padding:clamp(18px,5vw,56px);margin:24px 0;color:#243253;background:#fff5df;border-radius:22px}article.manual h1{font-size:clamp(26px,4vw,42px)}article.manual h2{margin:40px 0 16px;border-bottom:2px solid #d8bb77;padding-bottom:12px}article.manual h3{margin:26px 0 12px}article.manual p{margin:14px 0}article.manual a{color:#174fba}article.manual pre{overflow:auto;padding:18px;background:#132e64;color:#fff;border-radius:12px;font-size:14px}article.manual code{font-family:Consolas,monospace}article.manual table{border-collapse:collapse;display:block;overflow:auto}article.manual td,article.manual th{border:1px solid #c8b78d;padding:10px;text-align:left}article.manual li{margin:8px 0}article.manual .anchor{display:none}</style></head><body><header><a class="brand" href="index.html">⚄ 大富翁 4</a><nav><a href="index.html#downloads">下载安装</a><a href="https://github.com/EXP-Games/rich4-online-release/blob/master/USER-MANUAL.md">GitHub 手册</a></nav></header><main><article class="manual"><h1 dir="auto">大富翁 4 重制版使用手册</h1>
 <h2 dir="auto">下载与文件校验</h2>
-<p dir="auto">浏览器版直接打开 <a href="http://47.253.174.78/" rel="nofollow">http://47.253.174.78/</a>。Windows 和 Android 从 <a href="https://github.com/EXP-Games/rich4-online-release/releases">发布页</a> 下载，使用同一个版本目录内的文件。</p>
+<p dir="auto">浏览器版请先按 <a href="PLATFORM.md">平台启动说明</a> 自行部署服务器，再打开所部署的 Web 地址。Windows 和 Android 从 <a href="https://github.com/EXP-Games/rich4-online-release/releases">发布页</a> 下载，使用同一个版本目录内的文件。</p>
 <p dir="auto">完整 APK 包含 21 段独立过场、游戏内动画、音乐、音效和语音。本期不提供轻量 APK。超过 GitHub 单文件限制的 ZIP／APK 以 <code class="notranslate">.001</code>、<code class="notranslate">.002</code> 等分卷提供：</p>
 <ol dir="auto">
 <li>下载所需平台的全部连续分卷，以及 <code class="notranslate">release-manifest.json</code>、<code class="notranslate">Merge-Packages.cmd</code>、<code class="notranslate">Merge-Packages.ps1</code> 和 <code class="notranslate">SHA256SUMS.txt</code>，放到同一个文件夹。</li>
@@ -10,17 +10,16 @@
 <p dir="auto">若发布页直接提供完整 <code class="notranslate">.zip</code> 或 <code class="notranslate">.apk</code>，下载该文件即可。可用 PowerShell 的 <code class="notranslate">Get-FileHash -Algorithm SHA256 "文件名"</code> 与 <code class="notranslate">SHA256SUMS.txt</code> 对照。合并期间须有足够空间同时保存分卷与成品，验证完成后可自行删除分卷。</p>
 <p dir="auto">当前发布版本为 <a href="https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115">v0.1.11-preview.20261115</a>：Windows 完整 ZIP 约 4.26 GB，共 3 卷；Android ARM64 完整 APK 约 3.31 GB，共 2 卷。只需下载自己平台的分卷，共用上述校验与合并工具。</p>
 <h2 dir="auto">1. 平台启动方式</h2>
-<p dir="auto">平台负责房间管理、原生 TCP 和 WebSocket 转发，不运行游戏画面。管理员从部署包目录启动，先安装 Python 3.11+ 及依赖：</p>
-<div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate">python <span class="pl-k">-</span>m pip install <span class="pl-k">-</span>r lobby<span class="pl-k">/</span>requirements<span class="pl-k">-</span>web.txt
-<span class="pl-smi">$<span class="pl-c1">env:</span>RICH4_ADMIN_TOKEN</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>请替换为自己的管理令牌<span class="pl-pds">'</span></span>
+<p dir="auto">平台负责房间管理和联机转发，不运行游戏画面。Windows 发行包已包含原生联机大厅：解压后进入 <code class="notranslate">Rich4/bin/</code>，安装 Python 3.11+，运行以下命令。独立平台部署包可在其根目录运行相同命令：</p>
+<div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate"><span class="pl-smi">$<span class="pl-c1">env:</span>RICH4_ADMIN_TOKEN</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>请替换为自己的管理令牌<span class="pl-pds">'</span></span>
 python lobby<span class="pl-k">/</span>server.py <span class="pl-k">--</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>port <span class="pl-c1">27654</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>bind <span class="pl-c1">127.0</span>.<span class="pl-c1">0.1</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>port <span class="pl-c1">27655</span> <span class="pl-k">--</span>room<span class="pl-k">-</span>store .<span class="pl-k">/</span><span class="pl-k">data</span><span class="pl-k">/</span>rooms.json <span class="pl-k">--</span>create<span class="pl-k">-</span>room <span class="pl-c1">4</span></pre></div>
 <p dir="auto"><code class="notranslate">--create-room 4</code> 创建一个四席位平台房间，启动输出提供口令。管理页为 <a href="http://127.0.0.1:27655/" rel="nofollow">http://127.0.0.1:27655/</a>，登录后可以创建和管理房间。后续使用已保存的房间时可省略 <code class="notranslate">--create-room 4</code>；房间配置会保留，对局存档不会保留。Linux 中用 <code class="notranslate">export RICH4_ADMIN_TOKEN='自己的管理令牌'</code> 设置环境变量。</p>
-<p dir="auto">原生 Windows／Android 客户端连接 <code class="notranslate">服务器IP:27654</code>。只对玩家开放游戏端口；管理端口保留在回环地址。远程管理现有测试平台可先建立隧道：</p>
-<pre lang="text" class="notranslate"><code class="notranslate">ssh -N -T -L 127.0.0.1:27655:127.0.0.1:27655 admin@47.253.174.78
+<p dir="auto">原生 Windows／Android 客户端连接 <code class="notranslate">服务器IP:27654</code>。只对玩家开放游戏端口；管理端口保留在回环地址。远程管理自己部署的平台，可先建立 SSH 隧道：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">ssh -N -T -L 127.0.0.1:27655:127.0.0.1:27655 user@your-server
 </code></pre>
 <p dir="auto">然后在本机打开上述管理页。管理令牌不填入游戏房间口令，不发给玩家。</p>
 <h2 dir="auto">2. Web 后端和前端启动方式</h2>
-<p dir="auto">完整部署包内的 <code class="notranslate">web/</code> 是已构建前端。一次启动同时提供平台、网页和 WebSocket：</p>
+<p dir="auto">浏览器版需要完整 Web 部署包，包括前端、WASM 和配套素材。Windows 发行包只带原生联机大厅，不包含该 Web 部署目录。完整部署包内的 <code class="notranslate">web/</code> 是已构建前端，一次启动同时提供平台、网页和 WebSocket：</p>
 <div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate">python <span class="pl-k">-</span>m pip install <span class="pl-k">-</span>r lobby<span class="pl-k">/</span>requirements<span class="pl-k">-</span>web.txt
 <span class="pl-smi">$<span class="pl-c1">env:</span>RICH4_ADMIN_TOKEN</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>请替换为自己的管理令牌<span class="pl-pds">'</span></span>
 python lobby<span class="pl-k">/</span>server.py <span class="pl-k">--</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>port <span class="pl-c1">27654</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>bind <span class="pl-c1">127.0</span>.<span class="pl-c1">0.1</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>port <span class="pl-c1">27655</span> <span class="pl-k">--</span>room<span class="pl-k">-</span>store .<span class="pl-k">/</span><span class="pl-k">data</span><span class="pl-k">/</span>rooms.json <span class="pl-k">--</span>web<span class="pl-k">-</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>web<span class="pl-k">-</span>port <span class="pl-c1">27656</span> <span class="pl-k">--</span>client<span class="pl-k">-</span>root .<span class="pl-k">/</span>web</pre></div>
@@ -32,7 +31,7 @@ npm <span class="pl-k">--</span>prefix web<span class="pl-k">-</span>client run 
 <p dir="auto">打开 <a href="http://127.0.0.1:5173/" rel="nofollow">http://127.0.0.1:5173/</a>，联机服务器填写 <code class="notranslate">ws://127.0.0.1:27656/connect</code>。5173 是前端开发端口，不是原生游戏端口。前端开发模式也需要已准备的 <code class="notranslate">web-client/public/engine/</code> 资源。</p>
 <h2 dir="auto">3. Web 浏览器版本游玩</h2>
 <ol dir="auto">
-<li>打开 <a href="http://47.253.174.78/" rel="nofollow">http://47.253.174.78/</a>，等待首批资源准备完成。</li>
+<li>自行部署 Web 服务，或取得房主提供的部署地址；打开该地址，等待首批资源准备完成。</li>
 <li>单机选择「开始游戏」，依次选择地图、角色和开局规则；联机选择「多人联机」。</li>
 <li>资源按需下载，首次进入地图或打开业务窗口时可能等待。保持网页和网络连接。</li>
 </ol>
@@ -75,7 +74,7 @@ npm <span class="pl-k">--</span>prefix web<span class="pl-k">-</span>client run 
 <h2 dir="auto">6. 联机步骤</h2>
 <h3 dir="auto">平台联机</h3>
 <ol dir="auto">
-<li>Windows／Android 进入「多人联机」，服务器填 <code class="notranslate">47.253.174.78:27654</code>；浏览器在测试站点中使用当前网页服务，或填 <code class="notranslate">ws://47.253.174.78/connect</code>。</li>
+<li>Windows／Android 进入「多人联机」，服务器填自己部署的 <code class="notranslate">服务器IP:27654</code>；浏览器打开部署的网页，使用当前网页服务，或填 <code class="notranslate">ws://服务器IP:27656/connect</code>。</li>
 <li>填写昵称。房主点击「平台建房」，或使用管理员提供的平台房间；其他玩家填写相同六位口令，点击蓝色「加入房间」。</li>
 <li>切换人物。房主选择地图、游戏期限及席位；空位开局补入 AI，关闭的席位不参与。</li>
 <li>点击「准备」，选择离线预案并确认。未建房或未加入房间前，准备按钮不可用。</li>

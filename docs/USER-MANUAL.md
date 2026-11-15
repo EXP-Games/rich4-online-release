@@ -2,7 +2,7 @@
 
 ## 下载与文件校验
 
-浏览器版直接打开 <http://47.253.174.78/>。Windows 和 Android 从 [发布页](https://github.com/EXP-Games/rich4-online-release/releases) 下载，使用同一个版本目录内的文件。
+浏览器版请先按 [平台启动说明](PLATFORM.md) 自行部署服务器，再打开所部署的 Web 地址。Windows 和 Android 从 [发布页](https://github.com/EXP-Games/rich4-online-release/releases) 下载，使用同一个版本目录内的文件。
 
 完整 APK 包含 21 段独立过场、游戏内动画、音乐、音效和语音。本期不提供轻量 APK。超过 GitHub 单文件限制的 ZIP／APK 以 `.001`、`.002` 等分卷提供：
 
@@ -16,27 +16,26 @@
 
 ## 1. 平台启动方式
 
-平台负责房间管理、原生 TCP 和 WebSocket 转发，不运行游戏画面。管理员从部署包目录启动，先安装 Python 3.11+ 及依赖：
+平台负责房间管理和联机转发，不运行游戏画面。Windows 发行包已包含原生联机大厅：解压后进入 `Rich4/bin/`，安装 Python 3.11+，运行以下命令。独立平台部署包可在其根目录运行相同命令：
 
 ```powershell
-python -m pip install -r lobby/requirements-web.txt
 $env:RICH4_ADMIN_TOKEN='请替换为自己的管理令牌'
 python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --create-room 4
 ```
 
 `--create-room 4` 创建一个四席位平台房间，启动输出提供口令。管理页为 <http://127.0.0.1:27655/>，登录后可以创建和管理房间。后续使用已保存的房间时可省略 `--create-room 4`；房间配置会保留，对局存档不会保留。Linux 中用 `export RICH4_ADMIN_TOKEN='自己的管理令牌'` 设置环境变量。
 
-原生 Windows／Android 客户端连接 `服务器IP:27654`。只对玩家开放游戏端口；管理端口保留在回环地址。远程管理现有测试平台可先建立隧道：
+原生 Windows／Android 客户端连接 `服务器IP:27654`。只对玩家开放游戏端口；管理端口保留在回环地址。远程管理自己部署的平台，可先建立 SSH 隧道：
 
 ```text
-ssh -N -T -L 127.0.0.1:27655:127.0.0.1:27655 admin@47.253.174.78
+ssh -N -T -L 127.0.0.1:27655:127.0.0.1:27655 user@your-server
 ```
 
 然后在本机打开上述管理页。管理令牌不填入游戏房间口令，不发给玩家。
 
 ## 2. Web 后端和前端启动方式
 
-完整部署包内的 `web/` 是已构建前端。一次启动同时提供平台、网页和 WebSocket：
+浏览器版需要完整 Web 部署包，包括前端、WASM 和配套素材。Windows 发行包只带原生联机大厅，不包含该 Web 部署目录。完整部署包内的 `web/` 是已构建前端，一次启动同时提供平台、网页和 WebSocket：
 
 ```powershell
 python -m pip install -r lobby/requirements-web.txt
@@ -59,7 +58,7 @@ npm --prefix web-client run dev
 
 ## 3. Web 浏览器版本游玩
 
-1. 打开 <http://47.253.174.78/>，等待首批资源准备完成。
+1. 自行部署 Web 服务，或取得房主提供的部署地址；打开该地址，等待首批资源准备完成。
 2. 单机选择「开始游戏」，依次选择地图、角色和开局规则；联机选择「多人联机」。
 3. 资源按需下载，首次进入地图或打开业务窗口时可能等待。保持网页和网络连接。
 
@@ -94,7 +93,7 @@ npm --prefix web-client run dev
 
 ### 平台联机
 
-1. Windows／Android 进入「多人联机」，服务器填 `47.253.174.78:27654`；浏览器在测试站点中使用当前网页服务，或填 `ws://47.253.174.78/connect`。
+1. Windows／Android 进入「多人联机」，服务器填自己部署的 `服务器IP:27654`；浏览器打开部署的网页，使用当前网页服务，或填 `ws://服务器IP:27656/connect`。
 2. 填写昵称。房主点击「平台建房」，或使用管理员提供的平台房间；其他玩家填写相同六位口令，点击蓝色「加入房间」。
 3. 切换人物。房主选择地图、游戏期限及席位；空位开局补入 AI，关闭的席位不参与。
 4. 点击「准备」，选择离线预案并确认。未建房或未加入房间前，准备按钮不可用。

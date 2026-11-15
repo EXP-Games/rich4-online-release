@@ -1,6 +1,6 @@
 # 平台与 Web 服务启动说明
 
-普通玩家直接进入 [浏览器游戏](http://47.253.174.78/) 或下载 Windows／Android 客户端，不需要自行启动平台。本页面向持有部署包的管理员。
+请自行部署平台，或连接房主自行部署的服务器。Windows／Android 客户端可以单机游玩；浏览器版需要先部署 Web 服务，再打开部署地址。
 
 ## 部署目录
 
@@ -10,10 +10,9 @@
 
 ## 只启动平台
 
-在部署目录运行：
+Windows 发行包已包含原生联机大厅：解压后进入 `Rich4/bin/`，安装 Python 3.11+，即可运行下列命令；独立平台部署包则在其根目录运行：
 
 ```powershell
-python -m pip install -r lobby/requirements-web.txt
 $env:RICH4_ADMIN_TOKEN='请替换为自己的随机管理令牌'
 python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --create-room 4
 ```
@@ -24,9 +23,10 @@ Linux 使用 `export RICH4_ADMIN_TOKEN='自己的随机管理令牌'` 设置环�
 
 ## 同时启动 Web 前端与后端
 
-先安装上述依赖并设置管理令牌，然后运行：
+浏览器版需要单独准备完整 Web 部署包；Windows 发行包只包含原生大厅，不含 Web 游戏前端。安装 Web 依赖并设置管理令牌，然后运行：
 
 ```powershell
+python -m pip install -r lobby/requirements-web.txt
 python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --web-bind 0.0.0.0 --web-port 27656 --client-root ./web
 ```
 
@@ -38,7 +38,7 @@ python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-
 | Web 游戏与 WebSocket | HTTP／WS 27656 | 浏览器打开网页；服务器可填 `ws://服务器IP:27656/connect` |
 | 管理页面 | HTTP 27655，仅回环地址 | 本机打开 `http://127.0.0.1:27655/` |
 
-当前公共测试站点使用 HTTP 80 端口，地址为 `http://47.253.174.78/`；对应 WebSocket 为 `ws://47.253.174.78/connect`。不需要 HTTPS 证书。
+如将 Web 服务部署在 HTTP 80 端口，浏览器打开 `http://服务器IP/`，对应 WebSocket 为 `ws://服务器IP/connect`。HTTP／WS 部署不需要 HTTPS 证书。
 
 ## 分别运行前端开发服务器
 

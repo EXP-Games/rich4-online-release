@@ -2,7 +2,7 @@
 
 保留原版对照入口，提供 Windows、Android 和浏览器重制版，支持八张经典地图、单机存档和跨端联机。
 
-[浏览器直接游玩](http://47.253.174.78/) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
+[自行部署浏览器版](PLATFORM.md) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
 
 最新预览版 [v0.1.11-preview.20261115](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
 
@@ -19,10 +19,9 @@ Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核�
 
 ## 1. 平台启动方式
 
-平台提供房间管理和联机转发，运行目录独立于 Git 仓库。安装 Python 3.11+，在部署包目录运行：
+平台提供房间管理和联机转发。解压 Windows 发行包后，进入 `Rich4/bin/`，安装 Python 3.11+ 即可启动原生联机大厅；独立平台部署包也可在其根目录启动：
 
 ```powershell
-python -m pip install -r lobby/requirements-web.txt
 $env:RICH4_ADMIN_TOKEN='请替换为自己的管理令牌'
 python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --create-room 4
 ```
@@ -43,7 +42,7 @@ python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-
 
 ## 3. Web 浏览器版本游玩
 
-打开 [公网游戏页面](http://47.253.174.78/)，等待首批资源准备，选择「开始游戏」或「多人联机」。使用 HTTP／WS，无需证书。网页存档保存在当前浏览器和站点中，清除站点数据会删除存档，不同设备不自动共享。
+先按 [平台启动说明](PLATFORM.md) 自行部署 Web 服务，再打开部署地址（例如 `http://服务器IP:27656/`），等待首批资源准备，选择「开始游戏」或「多人联机」。使用 HTTP／WS，无需证书。网页存档保存在当前浏览器和站点中，清除站点数据会删除存档，不同设备不自动共享。
 
 ## 4. Windows 版本游玩
 
@@ -65,7 +64,7 @@ Android 8.0+ 的 64 位 ARM 手机安装 ARM64 完整 APK。若为分卷，先�
 
 ## 6. 联机步骤
 
-1. Windows／Android 服务器填 `47.253.174.78:27654`；浏览器使用当前站点服务，或填 `ws://47.253.174.78/connect`。
+1. Windows／Android 服务器填自己部署的 `服务器IP:27654`；浏览器打开自己部署的网页，使用当前站点服务，或填 `ws://服务器IP:27656/connect`。
 2. 填写昵称。房主平台建房，或使用管理员给出的平台房间；其他玩家输入相同六位口令，点击「加入房间」。
 3. 切换人物，房主设置地图、期限和席位。空位开局补 AI，关闭席位不参与。
 4. 选择离线预案并准备；未加入房间前准备按钮不可点击。其他玩家准备后由房主开始。
