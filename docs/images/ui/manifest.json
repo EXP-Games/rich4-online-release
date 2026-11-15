@@ -6,7 +6,7 @@
     {
       "id": "main",
       "title": "主菜单",
-      "note": "封面忍太郎已按确认的头部修正护额；开始游戏合并原有两种开局入口。",
+      "note": "主菜单封面统一使用新版忍太郎：尖角紫色头巾、四角手里剑护额与红围巾。",
       "devices": [
         {
           "id": "pc",
@@ -14,8 +14,8 @@
           "file": "main-pc.png",
           "width": 1672,
           "height": 941,
-          "sha256": "669a1ea31d747357435dbb31e395a85b614024476477470874473f7a0e662db3",
-          "bytes": 2062083
+          "sha256": "00017b22f1e945f04e90a9e83bc787d1b9d0a2f917eb8224dfd3a46810199c4c",
+          "bytes": 2084678
         },
         {
           "id": "mobile-landscape",
@@ -23,17 +23,17 @@
           "file": "main-mobile-landscape.png",
           "width": 1846,
           "height": 852,
-          "sha256": "d37e7f9714aefb2d4cd094852080659ca304498587353b58d453ba021a3db33a",
-          "bytes": 2087368
+          "sha256": "7fd8aae1ce6665a6ce7c645cd3a282ed3b663b7c124a598465e754c6536eb660",
+          "bytes": 2112000
         },
         {
           "id": "mobile-portrait",
           "label": "手机竖屏",
           "file": "main-mobile-portrait.png",
-          "width": 941,
+          "width": 942,
           "height": 1670,
-          "sha256": "2c2b43096c6f1c2e4df10b8307d03c144d027822349d5ef9efee0c55f5e270e6",
-          "bytes": 2097300
+          "sha256": "1bab3be5e23edfb47807a004bb8b0f8aeefa99225178f7df1029803635951088",
+          "bytes": 2117434
         }
       ]
     },
