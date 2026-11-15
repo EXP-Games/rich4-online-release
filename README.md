@@ -1,72 +1,76 @@
 # 大富翁 4 · 联机重制版下载
 
-本仓库用于公开分发 Windows 安装包、Android APK 和可选资源，不托管开发源码仓库及历史。
+保留原版对照入口，提供 Windows、Android 和浏览器重制版，支持八张经典地图、单机存档和跨端联机。
 
-[打开游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/)
+[浏览器直接游玩](http://47.253.174.78/) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
 
-下载区下方新增 [新版界面效果图](https://exp-games.github.io/rich4-online-release/#preview)：七组页面，每组提供 PC 横屏、手机横屏、手机竖屏，共二十一张，支持筛选和点击放大。网页采用蓝色、紫金边框与立体按钮的新视觉。效果图尚未全部实装，不代表当前安装包已经包含这些新界面；棋盘人物、神仙和 NPC 的造型仍需按原版校准。
+本期发布版本为 `v0.1.11-preview.20261115`，安装包以 GitHub Release 中实际完成上传并发布的附件为准。Android 采用完整过场 APK，不再提供本期轻量包。超出单文件大小限制的包提供连续分卷和校验合并脚本，详见使用手册。
 
-主菜单封面已按确认的头部修正护额轮廓、透视及“忍”字对齐，PC 横屏、手机横屏、手机竖屏已同步。开发版 UI 正在重绘；下方现有安装包仍为已发布版本。
+## 1. 平台启动方式
 
-## 下载与启动
+平台提供房间管理和联机转发，运行目录独立于 Git 仓库。安装 Python 3.11+，在部署包目录运行：
 
-当前版本为 [v0.1.9 联机预览版](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.9-preview.20261108)。Windows 和手机联机时必须一起更新到同一批版本。
+```powershell
+python -m pip install -r lobby/requirements-web.txt
+$env:RICH4_ADMIN_TOKEN='请替换为自己的管理令牌'
+python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --create-room 4
+```
 
-本版加入棋盘触控浏览：单指拖动地图，按住查看物件，联机等待时也可本机查看。双指、系统取消、失焦、旋转和进入弹窗会清理旧手势，避免误点 GO。只改变本机视角，不移动角色或修改对局状态。保留此前聊天、浮层和触屏返回修复。
+游戏客户端连接 `服务器IP:27654`；管理页打开 <http://127.0.0.1:27655/>，使用管理令牌登录。`--create-room 4` 创建四席位平台房间，已有持久房间时可省略。Linux 使用 `export RICH4_ADMIN_TOKEN='自己的管理令牌'` 设置令牌。管理页不向玩家公开。
 
-另完成同机 Windows＋Android 模拟器两个客户端及两个 AI 的自然 30 天完整局：255 个共享模型／RNG 边界一致，双方持续在线至结算，正常回到原房、保留口令并重置准备。这个结果不替代真机、四台独立设备或异地整局验收。
+## 2. Web 后端和前端启动方式
 
-| 文件 | 使用方法 |
+部署包运行已构建前端：
+
+```powershell
+python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-port 27655 --room-store ./data/rooms.json --web-bind 0.0.0.0 --web-port 27656 --client-root ./web
+```
+
+打开 `http://服务器IP:27656/`。HTTP／WebSocket 使用 27656，原生 TCP 使用 27654。首次部署需准备与清单匹配的 `web/engine/data/` 素材；更新代码可复用素材。
+
+从源码启动时先按 [DEV.md](https://github.com/EXP-Games/rich4-online/blob/master/DEV.md) 构建 WASM、准备资源和前端，然后将 `--client-root ./web` 换为 `--client-root ./web-client/dist`。前端单独开发运行 `npm --prefix web-client run dev`，打开 `http://127.0.0.1:5173/`；后端允许来源 `--web-origin http://127.0.0.1:5173`，游戏内服务器填写 `ws://127.0.0.1:27656/connect`。
+
+## 3. Web 浏览器版本游玩
+
+打开 [公网游戏页面](http://47.253.174.78/)，等待首批资源准备，选择「开始游戏」或「多人联机」。使用 HTTP／WS，无需证书。网页存档保存在当前浏览器和站点中，清除站点数据会删除存档，不同设备不自动共享。
+
+## 4. Windows 版本游玩
+
+下载 Windows 包；若为分卷，先下载全部分卷及合并工具，运行 `Merge-Packages.cmd` 校验还原 ZIP。全部解压后打开 `Rich4/`：
+
+| 入口 | 用途 |
 | --- | --- |
-| [Windows x64 完整 ZIP，约 1.68 GB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/Rich4-Windows-x64-v0.1.9-preview.20261108.zip) | 全部解压，运行 `Rich4/Start.vbs`；不需要 Steam，不要单独移动 EXE |
-| [Android ARM64 无过场 APK，约 294 MB](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/Rich4-Android-arm64-no-cinematics-v0.1.9-preview.20261108.apk) | Android 8.0 及以上；同签名可覆盖安装，首次启动需要准备资源 |
-| [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.9-preview.20261108/SHA256SUMS.txt) | 用 SHA-256 核对下载文件完整性 |
+| `大富翁4-Re.exe` | 高清重制版，日常游玩入口 |
+| `大富翁4-Re.cmd` | 显示控制台日志的重制版入口 |
+| `大富翁4.exe` | 原版对照入口，默认《多元宇宙之旅》 |
 
-APK 省去 21 段独立过场视频，保留道具、神仙、卡片、角色和住院等游戏内动画，以及音乐、音效、语音。进入系统设置 → 过场资源，可选下载约 1.43 GB 的独立过场，支持取消、重试及开启／关闭播放。已完成的文件保留，更新 APK 时可继续复用。当前不发布完整过场 APK。Windows 包包含完整过场。
+保留完整目录。重制版成品包可直接运行；原版入口和 Windows 本地建房需要 Python 3.11+，加入平台房间不需要 Python。原版和重制版设置、存档独立。日志统一放在 `logs/`。
 
-过场文件独立放在 [cinematics-v1 资源发布页](https://github.com/EXP-Games/rich4-online-release/releases/tag/cinematics-v1)，APK 按内置文件大小和 SHA-256 清单校验，每次升级无需重复下载。未完成的单个文件重试时会从头下载。
+## 5. Android 版本游玩
 
-Android 包使用开发签名，属于预览版。ARM64 手机实机及实体四机验收已移出当前范围，不代表已验证；公网完整对局验收仍未完成。iOS 尚未提供。
+Android 8.0+ 的 64 位 ARM 手机安装 ARM64 完整 APK。若为分卷，先在电脑上运行合并工具还原 APK，再传到手机安装；不能直接安装 `.001`。本地 x86_64 完整包用于对应架构模拟器。
 
-## 新版界面设计预览
+首次启动需准备资源，预留安装和解压空间。完整包包含 21 段独立过场及全部游戏内动画、音乐和语音，无需额外下载过场。同签名版本可覆盖安装保留数据；当前使用开发签名。
 
-以下是设计效果图，尚未全部实装；不表示当前 APK／Windows 包已经包含。点击图片可查看原图，完整图集见 [下载站效果图](https://exp-games.github.io/rich4-online-release/#preview)。
+## 6. 联机步骤
 
-| 页面 | PC 横屏 | 手机横屏 | 手机竖屏 |
-| --- | --- | --- | --- |
-| 主菜单 | <a href="docs/images/ui/main-pc.png"><img src="docs/images/ui/main-pc.png?v=669a1ea31d74" width="220" alt="主菜单 · pc · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-landscape.png"><img src="docs/images/ui/main-mobile-landscape.png?v=d37e7f9714ae" width="220" alt="主菜单 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/main-mobile-portrait.png"><img src="docs/images/ui/main-mobile-portrait.png?v=2c2b43096c6f" width="120" alt="主菜单 · mobile-portrait · 设计效果图"></a> |
-| 联机房间 | <a href="docs/images/ui/room-pc.png"><img src="docs/images/ui/room-pc.png" width="220" alt="联机房间 · pc · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-landscape.png"><img src="docs/images/ui/room-mobile-landscape.png" width="220" alt="联机房间 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/room-mobile-portrait.png"><img src="docs/images/ui/room-mobile-portrait.png" width="120" alt="联机房间 · mobile-portrait · 设计效果图"></a> |
-| 系统设置 | <a href="docs/images/ui/settings-pc.png"><img src="docs/images/ui/settings-pc.png" width="220" alt="系统设置 · pc · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-landscape.png"><img src="docs/images/ui/settings-mobile-landscape.png" width="220" alt="系统设置 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/settings-mobile-portrait.png"><img src="docs/images/ui/settings-mobile-portrait.png" width="120" alt="系统设置 · mobile-portrait · 设计效果图"></a> |
-| 离线行动确认 | <a href="docs/images/ui/policy-pc.png"><img src="docs/images/ui/policy-pc.png" width="220" alt="离线行动确认 · pc · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-landscape.png"><img src="docs/images/ui/policy-mobile-landscape.png" width="220" alt="离线行动确认 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/policy-mobile-portrait.png"><img src="docs/images/ui/policy-mobile-portrait.png" width="120" alt="离线行动确认 · mobile-portrait · 设计效果图"></a> |
-| 选择地图 | <a href="docs/images/ui/maps-pc.png"><img src="docs/images/ui/maps-pc.png" width="220" alt="选择地图 · pc · 设计效果图"></a> | <a href="docs/images/ui/maps-mobile-landscape.png"><img src="docs/images/ui/maps-mobile-landscape.png" width="220" alt="选择地图 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/maps-mobile-portrait.png"><img src="docs/images/ui/maps-mobile-portrait.png" width="120" alt="选择地图 · mobile-portrait · 设计效果图"></a> |
-| 选择角色 | <a href="docs/images/ui/characters-pc.png"><img src="docs/images/ui/characters-pc.png" width="220" alt="选择角色 · pc · 设计效果图"></a> | <a href="docs/images/ui/characters-mobile-landscape.png"><img src="docs/images/ui/characters-mobile-landscape.png" width="220" alt="选择角色 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/characters-mobile-portrait.png"><img src="docs/images/ui/characters-mobile-portrait.png" width="120" alt="选择角色 · mobile-portrait · 设计效果图"></a> |
-| 棋盘与行动条 | <a href="docs/images/ui/board-pc.png"><img src="docs/images/ui/board-pc.png" width="220" alt="棋盘与行动条 · pc · 设计效果图"></a> | <a href="docs/images/ui/board-mobile-landscape.png"><img src="docs/images/ui/board-mobile-landscape.png" width="220" alt="棋盘与行动条 · mobile-landscape · 设计效果图"></a> | <a href="docs/images/ui/board-mobile-portrait.png"><img src="docs/images/ui/board-mobile-portrait.png" width="120" alt="棋盘与行动条 · mobile-portrait · 设计效果图"></a> |
+1. Windows／Android 服务器填 `47.253.174.78:27654`；浏览器使用当前站点服务，或填 `ws://47.253.174.78/connect`。
+2. 填写昵称。房主平台建房，或使用管理员给出的平台房间；其他玩家输入相同六位口令，点击「加入房间」。
+3. 切换人物，房主设置地图、期限和席位。空位开局补 AI，关闭席位不参与。
+4. 选择离线预案并准备；未加入房间前准备按钮不可点击。其他玩家准备后由房主开始。
+5. 当前行动者操作 GO、道具和卡片。同步期间点击会保留一次操作，完成后自动执行。正常结算后回到原房间。
 
-菜单插画、立绘和头像保留已认可的设计风格；棋盘中的人物、神仙与 NPC 的造型仍需忠于原版校准。游戏时间默认无限期，单机使用原角色名。房间编辑结束自动保存、新 UI 接入和 PC 分辨率约束仍在开发，不作为当前安装包已完成功能宣传。
+Windows「本地建房」监听 `0.0.0.0`，其他设备连接房主实际的局域网／公网 IP，不能使用 `127.0.0.1`。浏览器「本地建房」由当前服务器托管。局域网以外直连需开放或转发端口。联机不提供存档，服务重启不保留进行中的对局；断线按预案执行，重连在安全边界恢复席位。
 
-### 行动条与按钮状态
+UI 与布局微调的小版本，在联机规则代次兼容时可共同游玩；规则不兼容时需更新客户端。
 
-| 行动条局部及状态 | 按钮未按下／按下 |
-| --- | --- |
-| <a href="docs/images/ui/timeline-detail.png"><img src="docs/images/ui/timeline-detail.png" width="420" alt="行动条局部、状态及换人方向"></a> | <a href="docs/images/ui/button-states.png"><img src="docs/images/ui/button-states.png" width="420" alt="按钮未按下与按下状态"></a> |
+## 操作与文档
 
-## 联机教程
+经典八图：中国台湾、中国大陆、日本、美国、宇宙、武侠、恐龙、南岛历险。单机有 30 个存档槽，包含 1 个自动存档。右侧资料卡查看资金、地产、股票和其他信息，小地图旁按钮定位、旋转和缩放。
 
-1. 主菜单点击 ONLINE，填写昵称和 6 位房间口令。服务器地址可在游戏内查看和修改；首次默认值由游戏配置提供，已保存的自定义设置优先。
-2. 玩家电脑可“本地建房”，平台管理员可通过 Linux 大厅创建房间；其他玩家填写地址和口令加入。Windows 本地建房需要 Python 3.10+，加入已有房间不需要 Python。
-3. 加入序号最小者为房主，负责选择地图、期限和席位。三人一叉是三人局；三人一空会在开始时补入 AI。
-4. 点击“准备”，选择断线预案，再点“确认并准备”。角色卡显示“已准备”后，由房主开始游戏。
-5. 对局按角色轮流操作。左下角三行文字播报可点击进入聊天；点击其他位置收起。医院和监狱可点击“返回”。联机不提供存档。
+- [使用手册](USER-MANUAL.md)：下载安装、六种启动／游玩方式、联机、存档与常见问题。
+- [官方原版说明书](https://github.com/EXP-Games/rich4-online/blob/master/docs/manuals/README.md)：原版规则 PDF。
+- [UI.md](https://github.com/EXP-Games/rich4-online/blob/master/UI.md)：界面与操作规范。
+- [DEV.md](https://github.com/EXP-Games/rich4-online/blob/master/DEV.md)：构建、测试、素材管理和发布 SOP。
 
-地图统一为：中国台湾、中国大陆、日本、美国、宇宙、武侠、恐龙、南岛历险。联机只提供这八张经典地图，随机地图改进暂停。
-
-平台房间全员离开后初始化并保留口令；玩家自建房间随房主离开解散。不要公开管理令牌、私人房间配置或日志。
-
-## v0.1.9 更新
-
-- 棋盘支持单指拖动，八个地图朝向按实际渲染投影对齐。
-- 轻微手抖保留点按，按住物件仍可查看说明。
-- 联机等待时可查看本机地图，不获得其他玩家的操作权限。
-- 双指、取消、失焦和旋转时清理旧手势，避免误点 GO 或工具栏。
-
-Windows 横竖屏夹具与 Android API 35 x86_64 模拟器实际滑动通过；与 Windows 及两个 AI 继续四次人类掷骰，六个共享模型／RNG 边界一致。实体手机及实体四机验收已移出当前范围，公网完整对局仍待验收；移除范围不等于验证通过。不包含双指缩放。
+原版文件与重制版独立，原始资源仅用于已有游戏的本地重制与对照，请遵守相应版权和分发约束。

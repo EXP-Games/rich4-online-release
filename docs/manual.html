@@ -1,0 +1,137 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用手册 · 大富翁4重制版</title><link rel="stylesheet" href="game.css"><style>article.manual{padding:clamp(18px,5vw,56px);margin:24px 0;color:#243253;background:#fff5df;border-radius:22px}article.manual h1{font-size:clamp(26px,4vw,42px)}article.manual h2{margin:40px 0 16px;border-bottom:2px solid #d8bb77;padding-bottom:12px}article.manual h3{margin:26px 0 12px}article.manual p{margin:14px 0}article.manual a{color:#174fba}article.manual pre{overflow:auto;padding:18px;background:#132e64;color:#fff;border-radius:12px;font-size:14px}article.manual code{font-family:Consolas,monospace}article.manual table{border-collapse:collapse;display:block;overflow:auto}article.manual td,article.manual th{border:1px solid #c8b78d;padding:10px;text-align:left}article.manual li{margin:8px 0}article.manual .anchor{display:none}</style></head><body><header><a class="brand" href="index.html">⚄ 大富翁 4</a><nav><a href="index.html#downloads">下载安装</a><a href="https://github.com/EXP-Games/rich4-online-release/blob/master/USER-MANUAL.md">GitHub 手册</a></nav></header><main><article class="manual"><h1 dir="auto">大富翁 4 重制版使用手册</h1>
+<h2 dir="auto">下载与文件校验</h2>
+<p dir="auto">浏览器版直接打开 <a href="http://47.253.174.78/" rel="nofollow">http://47.253.174.78/</a>。Windows 和 Android 从 <a href="https://github.com/EXP-Games/rich4-online-release/releases">发布页</a> 下载，使用同一个版本目录内的文件。</p>
+<p dir="auto">完整 APK 包含 21 段独立过场、游戏内动画、音乐、音效和语音。本期不提供轻量 APK。超过 GitHub 单文件限制的 ZIP／APK 以 <code class="notranslate">.001</code>、<code class="notranslate">.002</code> 等分卷提供：</p>
+<ol dir="auto">
+<li>下载所需平台的全部连续分卷，以及 <code class="notranslate">release-manifest.json</code>、<code class="notranslate">Merge-Packages.cmd</code>、<code class="notranslate">Merge-Packages.ps1</code> 和 <code class="notranslate">SHA256SUMS.txt</code>，放到同一个文件夹。</li>
+<li>双击 <code class="notranslate">Merge-Packages.cmd</code>。脚本检查各分卷 SHA-256，合并后再次检查整个 ZIP／APK；只下载 Android 分卷也可以单独合并 Android。</li>
+<li>Windows 将合并出的 ZIP 全部解压；Android 将合并出的 APK 复制到手机安装。分卷本身不能安装，不能直接改名为 APK。</li>
+</ol>
+<p dir="auto">若发布页直接提供完整 <code class="notranslate">.zip</code> 或 <code class="notranslate">.apk</code>，下载该文件即可。可用 PowerShell 的 <code class="notranslate">Get-FileHash -Algorithm SHA256 "文件名"</code> 与 <code class="notranslate">SHA256SUMS.txt</code> 对照。合并期间须有足够空间同时保存分卷与成品，验证完成后可自行删除分卷。</p>
+<h2 dir="auto">1. 平台启动方式</h2>
+<p dir="auto">平台负责房间管理、原生 TCP 和 WebSocket 转发，不运行游戏画面。管理员从部署包目录启动，先安装 Python 3.11+ 及依赖：</p>
+<div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate">python <span class="pl-k">-</span>m pip install <span class="pl-k">-</span>r lobby<span class="pl-k">/</span>requirements<span class="pl-k">-</span>web.txt
+<span class="pl-smi">$<span class="pl-c1">env:</span>RICH4_ADMIN_TOKEN</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>请替换为自己的管理令牌<span class="pl-pds">'</span></span>
+python lobby<span class="pl-k">/</span>server.py <span class="pl-k">--</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>port <span class="pl-c1">27654</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>bind <span class="pl-c1">127.0</span>.<span class="pl-c1">0.1</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>port <span class="pl-c1">27655</span> <span class="pl-k">--</span>room<span class="pl-k">-</span>store .<span class="pl-k">/</span><span class="pl-k">data</span><span class="pl-k">/</span>rooms.json <span class="pl-k">--</span>create<span class="pl-k">-</span>room <span class="pl-c1">4</span></pre></div>
+<p dir="auto"><code class="notranslate">--create-room 4</code> 创建一个四席位平台房间，启动输出提供口令。管理页为 <a href="http://127.0.0.1:27655/" rel="nofollow">http://127.0.0.1:27655/</a>，登录后可以创建和管理房间。后续使用已保存的房间时可省略 <code class="notranslate">--create-room 4</code>；房间配置会保留，对局存档不会保留。Linux 中用 <code class="notranslate">export RICH4_ADMIN_TOKEN='自己的管理令牌'</code> 设置环境变量。</p>
+<p dir="auto">原生 Windows／Android 客户端连接 <code class="notranslate">服务器IP:27654</code>。只对玩家开放游戏端口；管理端口保留在回环地址。远程管理现有测试平台可先建立隧道：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">ssh -N -T -L 127.0.0.1:27655:127.0.0.1:27655 admin@47.253.174.78
+</code></pre>
+<p dir="auto">然后在本机打开上述管理页。管理令牌不填入游戏房间口令，不发给玩家。</p>
+<h2 dir="auto">2. Web 后端和前端启动方式</h2>
+<p dir="auto">完整部署包内的 <code class="notranslate">web/</code> 是已构建前端。一次启动同时提供平台、网页和 WebSocket：</p>
+<div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate">python <span class="pl-k">-</span>m pip install <span class="pl-k">-</span>r lobby<span class="pl-k">/</span>requirements<span class="pl-k">-</span>web.txt
+<span class="pl-smi">$<span class="pl-c1">env:</span>RICH4_ADMIN_TOKEN</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>请替换为自己的管理令牌<span class="pl-pds">'</span></span>
+python lobby<span class="pl-k">/</span>server.py <span class="pl-k">--</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>port <span class="pl-c1">27654</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>bind <span class="pl-c1">127.0</span>.<span class="pl-c1">0.1</span> <span class="pl-k">--</span>http<span class="pl-k">-</span>port <span class="pl-c1">27655</span> <span class="pl-k">--</span>room<span class="pl-k">-</span>store .<span class="pl-k">/</span><span class="pl-k">data</span><span class="pl-k">/</span>rooms.json <span class="pl-k">--</span>web<span class="pl-k">-</span>bind <span class="pl-c1">0.0</span>.<span class="pl-c1">0.0</span> <span class="pl-k">--</span>web<span class="pl-k">-</span>port <span class="pl-c1">27656</span> <span class="pl-k">--</span>client<span class="pl-k">-</span>root .<span class="pl-k">/</span>web</pre></div>
+<p dir="auto">打开 <code class="notranslate">http://服务器IP:27656/</code>。HTTP 和 WebSocket 共用 27656 端口，原生客户端继续用 27654。部署包中的 <code class="notranslate">web/engine/data/</code> 必须准备完整并与资源清单匹配；代码更新包会复用该素材目录。当前公网平台使用 HTTP／WS，无需 HTTPS 证书。</p>
+<p dir="auto">从源码运行时，先按 <a href="https://github.com/EXP-Games/rich4-online/blob/master/DEV.md">开发文档</a> 构建 WASM、准备资源及前端，再把 <code class="notranslate">--client-root ./web</code> 改为 <code class="notranslate">--client-root ./web-client/dist</code>。</p>
+<p dir="auto">若要分别运行前端开发服务器，后端命令增加 <code class="notranslate">--web-origin http://127.0.0.1:5173</code>，在第二个终端运行：</p>
+<div class="highlight highlight-source-powershell" dir="auto"><pre class="notranslate">npm <span class="pl-k">--</span>prefix web<span class="pl-k">-</span>client ci
+npm <span class="pl-k">--</span>prefix web<span class="pl-k">-</span>client run dev</pre></div>
+<p dir="auto">打开 <a href="http://127.0.0.1:5173/" rel="nofollow">http://127.0.0.1:5173/</a>，联机服务器填写 <code class="notranslate">ws://127.0.0.1:27656/connect</code>。5173 是前端开发端口，不是原生游戏端口。前端开发模式也需要已准备的 <code class="notranslate">web-client/public/engine/</code> 资源。</p>
+<h2 dir="auto">3. Web 浏览器版本游玩</h2>
+<ol dir="auto">
+<li>打开 <a href="http://47.253.174.78/" rel="nofollow">http://47.253.174.78/</a>，等待首批资源准备完成。</li>
+<li>单机选择「开始游戏」，依次选择地图、角色和开局规则；联机选择「多人联机」。</li>
+<li>资源按需下载，首次进入地图或打开业务窗口时可能等待。保持网页和网络连接。</li>
+</ol>
+<p dir="auto">浏览器存档保存在当前站点和浏览器中。清除站点数据会删除存档；不同设备、浏览器及站点地址不自动共享。更新后若仍显示旧界面，可先刷新页面；不要通过清除站点数据来更新。</p>
+<h2 dir="auto">4. Windows 版本游玩</h2>
+<p dir="auto">解压完整 Windows 包，打开 <code class="notranslate">Rich4/</code>：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>入口</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">大富翁4-Re.exe</code></td>
+<td>启动高清重制版，正常游玩使用此入口</td>
+</tr>
+<tr>
+<td><code class="notranslate">大富翁4-Re.cmd</code></td>
+<td>同一重制版的控制台入口，用于查看日志</td>
+</tr>
+<tr>
+<td><code class="notranslate">大富翁4.exe</code></td>
+<td>原版对照入口，默认《多元宇宙之旅》</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">保留完整目录，不要只移动 EXE。重制版成品包不需要编译环境；原版入口及 Windows 本地建房需要安装 Python 3.11+。加入已有平台房间不需要 Python。原版和重制版使用独立设置、存档和日志；日志位于包内 <code class="notranslate">logs/</code>。</p>
+<p dir="auto">原版过场需要系统可用的 32 位 Indeo 5 组件，入口仅在原版进程内加载兼容组件，不修改原游戏文件或注册系统解码器。</p>
+<h2 dir="auto">5. Android 版本游玩</h2>
+<p dir="auto">普通 64 位 Android 手机安装 ARM64 APK，要求 Android 8.0 及以上。x86_64 APK 用于对应架构的模拟器，不用于 ARM64 手机。在线发布提供 ARM64 完整 APK，本地也可构建 x86_64 完整包。</p>
+<ol dir="auto">
+<li>若下载的是分卷，先按本手册开头的步骤还原完整 APK。</li>
+<li>将 APK 传到手机，允许当前文件管理器安装应用，完成安装。</li>
+<li>首次启动会准备游戏资源，预留安装包、解压资源和系统安装所需空间，保持应用前台并等待完成。</li>
+<li>后续同签名版本可覆盖安装，保留应用数据。若提示签名冲突，先确认是否下载了不同签名的包；卸载应用会清除其数据。</li>
+</ol>
+<p dir="auto">完整包已带独立过场，无需另行下载。系统设置可控制播放。界面适配横屏和竖屏，自动旋转由设备设置控制。当前 Android 包使用开发签名。</p>
+<h2 dir="auto">6. 联机步骤</h2>
+<h3 dir="auto">平台联机</h3>
+<ol dir="auto">
+<li>Windows／Android 进入「多人联机」，服务器填 <code class="notranslate">47.253.174.78:27654</code>；浏览器在测试站点中使用当前网页服务，或填 <code class="notranslate">ws://47.253.174.78/connect</code>。</li>
+<li>填写昵称。房主点击「平台建房」，或使用管理员提供的平台房间；其他玩家填写相同六位口令，点击蓝色「加入房间」。</li>
+<li>切换人物。房主选择地图、游戏期限及席位；空位开局补入 AI，关闭的席位不参与。</li>
+<li>点击「准备」，选择离线预案并确认。未建房或未加入房间前，准备按钮不可用。</li>
+<li>房主确认其他人准备后点击「开始游戏」。各端按当前玩家顺序操作。</li>
+</ol>
+<h3 dir="auto">局域网或自建服务器</h3>
+<p dir="auto">Windows 房主点击「本地建房」，监听地址为 <code class="notranslate">0.0.0.0</code>。其他设备填写房主实际的局域网 IP 和游戏端口，例如 <code class="notranslate">192.168.1.10:27654</code>，再输入房间口令。<code class="notranslate">127.0.0.1</code> 仅供同一台电脑连接，不能发给其他玩家。公网直连还需要开放或转发对应端口。</p>
+<p dir="auto">浏览器中的「本地建房」由当前网页服务器托管，不会在玩家电脑上启动 Python 服务；浏览器应使用该服务器的 WebSocket 地址。</p>
+<h3 dir="auto">对局与断线</h3>
+<ul dir="auto">
+<li>只有当前行动者可以掷骰及使用道具、卡片。同步期间点击入口会保留一次操作，完成后自动执行，无需反复点。</li>
+<li>联机对局不支持存读档。正常结算后返回原房间，清除准备状态，可再次开局。</li>
+<li>断线后按已选预案执行。重新加入原房间时先准备恢复资源，再在安全边界接回席位。服务重启不保留进行中的对局。</li>
+<li>UI、字体与布局微调，只要联机规则代次兼容即可共同游玩；出现规则不兼容提示时更新客户端。不要混用同一安装包的不同版本分卷。</li>
+</ul>
+<h2 dir="auto">单机与常用操作</h2>
+<p dir="auto">经典地图共有八张：中国台湾、中国大陆、日本、美国、宇宙、武侠、恐龙、南岛历险。选择地图会播放对应音乐。地图选择后设置人物、AI、初始资金与游戏期限。</p>
+<p dir="auto">点击 GO 掷骰。机车、汽车可调整骰子数量。右侧资料卡切换资金、地产、股票及其他信息，点击头像查看角色详情。小地图可定位、旋转，旁边的加减按钮缩放大地图，两侧各最多两档。</p>
+<p dir="auto">购买或加建土地时，点击 YES 或 NO 完成选择。银行输入金额后确定；道具、卡片按提示选择目标。左下角播报区可进入聊天。系统设置调整速度、音乐、音效、画面和右侧日历／小地图组合显示。</p>
+<p dir="auto">单机有 30 个存档槽：1 个自动存档、29 个手动存档。存档列表每页 6 槽。自动存档可读取，不能手动覆盖。</p>
+<h2 dir="auto">常见问题</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>情况</th>
+<th>检查方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加入失败</td>
+<td>检查原生 TCP 与 WebSocket 地址是否混用、房间口令、服务器和防火墙端口</td>
+</tr>
+<tr>
+<td>准备按钮不可用</td>
+<td>先建房或加入房间，再选择离线预案并准备</td>
+</tr>
+<tr>
+<td>页面仍显示旧版本</td>
+<td>刷新页面；不要清除含存档的站点数据</td>
+</tr>
+<tr>
+<td>分卷无法安装</td>
+<td>下载全部连续分卷并校验合并，再安装输出的 APK</td>
+</tr>
+<tr>
+<td>安装或准备资源失败</td>
+<td>检查剩余存储、安装包完整性、CPU 架构与系统版本</td>
+</tr>
+<tr>
+<td>道具点击后提示同步</td>
+<td>已记录一次操作，等待共同确认；当前行动者以外的玩家无法操作</td>
+</tr>
+<tr>
+<td>原版与重制版存档不同</td>
+<td>两个入口独立保管存档，这是正常行为</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">原版规则可另参考仓库保存的官方 PDF；本手册说明重制版的安装、启动和联机操作。</p></article></main><footer><a href="index.html">返回下载站</a></footer></body></html>
