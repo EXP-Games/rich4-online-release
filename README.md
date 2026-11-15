@@ -4,7 +4,16 @@
 
 [浏览器直接游玩](http://47.253.174.78/) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
 
-本期发布版本为 `v0.1.11-preview.20261115`，安装包以 GitHub Release 中实际完成上传并发布的附件为准。Android 采用完整过场 APK，不再提供本期轻量包。超出单文件大小限制的包提供连续分卷和校验合并脚本，详见使用手册。
+最新预览版 [v0.1.11-preview.20261115](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
+
+## 下载 v0.1.11-preview.20261115
+
+| 平台 | 完整包大小 | 必须下载的分卷 |
+| --- | --- | --- |
+| Windows x64 | 约 4.26 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.002) · [003](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Windows-x64-v0.1.11-preview.20261115.zip.003) |
+| Android ARM64 | 约 3.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Android-arm64-v0.1.11-preview.20261115.apk.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Rich4-Android-arm64-v0.1.11-preview.20261115.apk.002) |
+
+同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.11-preview.20261115/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
 
 ## 1. 平台启动方式
 
@@ -28,7 +37,7 @@ python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-
 
 打开 `http://服务器IP:27656/`。HTTP／WebSocket 使用 27656，原生 TCP 使用 27654。首次部署需准备与清单匹配的 `web/engine/data/` 素材；更新代码可复用素材。
 
-从源码启动时先按 [DEV.md](https://github.com/EXP-Games/rich4-online/blob/master/DEV.md) 构建 WASM、准备资源和前端，然后将 `--client-root ./web` 换为 `--client-root ./web-client/dist`。前端单独开发运行 `npm --prefix web-client run dev`，打开 `http://127.0.0.1:5173/`；后端允许来源 `--web-origin http://127.0.0.1:5173`，游戏内服务器填写 `ws://127.0.0.1:27656/connect`。
+从源码启动时先按 [平台与 Web 启动说明](PLATFORM.md) 构建 WASM、准备资源和前端，然后将 `--client-root ./web` 换为 `--client-root ./web-client/dist`。前端单独开发运行 `npm --prefix web-client run dev`，打开 `http://127.0.0.1:5173/`；后端允许来源 `--web-origin http://127.0.0.1:5173`，游戏内服务器填写 `ws://127.0.0.1:27656/connect`。
 
 ## 3. Web 浏览器版本游玩
 
@@ -69,8 +78,7 @@ UI 与布局微调的小版本，在联机规则代次兼容时可共同游玩�
 经典八图：中国台湾、中国大陆、日本、美国、宇宙、武侠、恐龙、南岛历险。单机有 30 个存档槽，包含 1 个自动存档。右侧资料卡查看资金、地产、股票和其他信息，小地图旁按钮定位、旋转和缩放。
 
 - [使用手册](USER-MANUAL.md)：下载安装、六种启动／游玩方式、联机、存档与常见问题。
-- [官方原版说明书](https://github.com/EXP-Games/rich4-online/blob/master/docs/manuals/README.md)：原版规则 PDF。
-- [UI.md](https://github.com/EXP-Games/rich4-online/blob/master/UI.md)：界面与操作规范。
-- [DEV.md](https://github.com/EXP-Games/rich4-online/blob/master/DEV.md)：构建、测试、素材管理和发布 SOP。
+- [官方原版说明书](https://cdn.akamai.steamstatic.com/steam/apps/2059810/manuals/%E5%A4%A7%E5%AF%8C%E7%BF%814%E8%AA%AA%E6%98%8E%E6%9B%B8.pdf?t=1658992525)：原版规则 PDF。
+- [平台与 Web 启动说明](PLATFORM.md)：平台部署、前后端启动、端口与运行维护。
 
 原版文件与重制版独立，原始资源仅用于已有游戏的本地重制与对照，请遵守相应版权和分发约束。

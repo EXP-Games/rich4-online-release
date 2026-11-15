@@ -12,6 +12,8 @@
 
 若发布页直接提供完整 `.zip` 或 `.apk`，下载该文件即可。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 "文件名"` 与 `SHA256SUMS.txt` 对照。合并期间须有足够空间同时保存分卷与成品，验证完成后可自行删除分卷。
 
+当前发布版本为 [v0.1.11-preview.20261115](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.11-preview.20261115)：Windows 完整 ZIP 约 4.26 GB，共 3 卷；Android ARM64 完整 APK 约 3.31 GB，共 2 卷。只需下载自己平台的分卷，共用上述校验与合并工具。
+
 ## 1. 平台启动方式
 
 平台负责房间管理、原生 TCP 和 WebSocket 转发，不运行游戏画面。管理员从部署包目录启动，先安装 Python 3.11+ 及依赖：
@@ -44,7 +46,7 @@ python lobby/server.py --bind 0.0.0.0 --port 27654 --http-bind 127.0.0.1 --http-
 
 打开 `http://服务器IP:27656/`。HTTP 和 WebSocket 共用 27656 端口，原生客户端继续用 27654。部署包中的 `web/engine/data/` 必须准备完整并与资源清单匹配；代码更新包会复用该素材目录。当前公网平台使用 HTTP／WS，无需 HTTPS 证书。
 
-从源码运行时，先按 [开发文档](https://github.com/EXP-Games/rich4-online/blob/master/DEV.md) 构建 WASM、准备资源及前端，再把 `--client-root ./web` 改为 `--client-root ./web-client/dist`。
+从源码运行时，先按 [平台与 Web 启动说明](PLATFORM.md) 构建 WASM、准备资源及前端，再把 `--client-root ./web` 改为 `--client-root ./web-client/dist`。
 
 若要分别运行前端开发服务器，后端命令增加 `--web-origin http://127.0.0.1:5173`，在第二个终端运行：
 
@@ -83,10 +85,10 @@ npm --prefix web-client run dev
 
 1. 若下载的是分卷，先按本手册开头的步骤还原完整 APK。
 2. 将 APK 传到手机，允许当前文件管理器安装应用，完成安装。
-3. 首次启动会准备游戏资源，预留安装包、解压资源和系统安装所需空间，保持应用前台并等待完成。
+3. 首次启动会准备游戏资源。完整 APK 约 3.3 GB，建议安装前至少有约 10 GB 可用空间，以容纳安装、解压资源和系统余量。保持应用前台并等待完成。
 4. 后续同签名版本可覆盖安装，保留应用数据。若提示签名冲突，先确认是否下载了不同签名的包；卸载应用会清除其数据。
 
-完整包已带独立过场，无需另行下载。系统设置可控制播放。界面适配横屏和竖屏，自动旋转由设备设置控制。当前 Android 包使用开发签名。
+完整包已带独立过场，无需另行下载。系统设置可控制播放。界面适配横屏和竖屏，自动旋转由设备设置控制。当前 Android 包使用开发签名。鸿蒙设备通过 USB 安装时，需要在手机端确认允许安装；若返回 `User rejected permissions`，先确认手机上的安装许可，再重试。
 
 ## 6. 联机步骤
 
