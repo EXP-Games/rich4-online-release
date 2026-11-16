@@ -6,3 +6,11 @@
 __pycache__/
 
 /platform/
+
+# Disposable editor backups and local drafts.
+*.bak
+*.orig
+*.rej
+/.drafts/
+/drafts/
+/scratch/
