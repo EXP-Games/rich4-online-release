@@ -10,3 +10,5 @@
 
 #random-landscapes .frame{height:auto;min-height:0;max-height:none}
 #random-landscapes .frame img{display:block;width:100%;height:auto;aspect-ratio:2048/624;object-fit:contain}
+#random-preview .frame{height:auto;min-height:0;max-height:none}
+#random-preview .frame img{display:block;width:100%;height:auto;aspect-ratio:1280/720;object-fit:contain}
