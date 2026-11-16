@@ -1,21 +1,29 @@
 # 大富翁 4 · 联机重制版下载
 
-保留原版对照入口，提供 Windows、Android 和浏览器重制版，支持八张经典地图、单机存档和跨端联机。
+保留原版对照入口，提供 Windows、Android 和浏览器重制版，支持八张经典地图、八种主题随机路线、单机存档和跨端联机。
 
 [自行部署浏览器版](PLATFORM.md) · [下载与发布页](https://github.com/EXP-Games/rich4-online-release/releases) · [游戏介绍与下载站](https://exp-games.github.io/rich4-online-release/) · [完整使用手册](USER-MANUAL.md)
 
-最新预览版 [v0.1.12-preview.20261116](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.12-preview.20261116) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
+最新预览版 [v0.1.13-preview.20261116](https://github.com/EXP-Games/rich4-online-release/releases/tag/v0.1.13-preview.20261116) 已发布。Windows 和 Android 均为完整过场包；本期不提供轻量 APK。
 
-## 下载 v0.1.12-preview.20261116
+## 下载 v0.1.13-preview.20261116
 
 | 平台 | 完整包大小 | 必须下载的分卷 |
 | --- | --- | --- |
-| Windows x64 | 约 4.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.002) · [003](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Windows-x64-v0.1.12-preview.20261116.zip.003) |
-| Android ARM64 | 约 3.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Android-arm64-v0.1.12-preview.20261116.apk.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Rich4-Android-arm64-v0.1.12-preview.20261116.apk.002) |
+| Windows x64 | 约 4.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Rich4-Windows-x64-v0.1.13-preview.20261116.zip.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Rich4-Windows-x64-v0.1.13-preview.20261116.zip.002) · [003](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Rich4-Windows-x64-v0.1.13-preview.20261116.zip.003) |
+| Android ARM64 | 约 3.31 GB | [001](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Rich4-Android-arm64-v0.1.13-preview.20261116.apk.001) · [002](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Rich4-Android-arm64-v0.1.13-preview.20261116.apk.002) |
 
-同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.12-preview.20261116/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
+同一文件夹还需要：[release-manifest.json](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/release-manifest.json) · [Merge-Packages.cmd](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Merge-Packages.cmd) · [Merge-Packages.ps1](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/Merge-Packages.ps1) · [SHA256SUMS.txt](https://github.com/EXP-Games/rich4-online-release/releases/download/v0.1.13-preview.20261116/SHA256SUMS.txt)。双击 CMD 后先校验并合并，再解压 ZIP 或安装 APK。Windows 要下载 **3 卷**，Android 要下载 **2 卷**。
 
-Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核对通过：[校验报告](docs/release-012-downloads.json)。
+Windows／Android 所有公开分卷及拼接后的完整文件 SHA-256 已核对通过：[校验报告](docs/release-013-downloads.json)。
+
+## 随机路线与移动提示
+
+开始游戏时，在地图选择页开启「随机」，选择主题后设置角色并开局；联机房间由房主在「选择地图」中开启。路线、地产、银行、商店、医院和监狱随本局生成，主题音乐和素材沿用所选地图。
+
+随机局可保存、读取和断线恢复，恢复时保留原来的地图与行走进度。联机所有玩家须升级至支持本功能的版本，旧规则版本不能混入本局。
+
+掷骰后，人物脚下显示剩余步数；每走完一格减 1，移动结束后消失。提示随人物、镜头、旋转和缩放更新。
 
 ## 1. 平台启动方式
 
